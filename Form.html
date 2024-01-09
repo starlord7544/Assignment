@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        body {
+            background-color: #ecedf5;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        #hero {
+            padding: 20px;
+        }
+        .form {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            /* border: 2px  solid red; */
+            height: 90vh;
+            width: 70%;
+        }
+        .name{
+            display: flex;
+            align-items: center;
+        }
+        .text {
+            width: 80%;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.13);
+            background-color: white;
+        }
+        .em {
+            width: 90%;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.13);
+            background-color: white;
+        }
+        button {
+            border-radius: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.13);
+            background-color: #ff6f00;
+            height: 30px;
+            width: 90px;
+            color: white;
+        }
+        .check {
+            color: rgb(70, 70, 70);
+            display: flex;
+            flex-direction: row;
+        }
+        a {
+            color: #ff6f00;
+        }
+        .flex {
+            display: flex;
+            align-items: center;
+            /* border: 1px solid; */
+        }
+        .password {
+            display: flex;
+        }
+        .width {
+            width: 50%;
+        }
+        input[type="checkbox"]:checked {
+            background-color: #ff6f00;
+        }
+
+    </style>
+</head>
+<body>
+    <section id="hero">
+        <form>
+            <div class="form">
+                <div>
+                    <h1>Register</h1>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem quae quasi eligendi cum sunt? A!
+                    </p>
+                </div>
+                <div class="name">
+                    <div class="fname width">
+                        <lable for="fname"><b>First Name:</b></lable> <br><br>
+                        <input type="text" placeholder="John" class="text">
+                    </div>
+                    <div class="lname width">
+                        <label for="lname"><b>Last Name:</b></label><br><br>
+                        <input type="text" placeholder="Smith" class="text">
+                    </div>
+                </div>
+                <div class="mail">
+                    <label for="Email"><b>Email Address</b></label><br><br>
+                    <input type="email" placeholder="e.g. john@your-domain.com" class="em">
+                </div>
+                <div class="flex first">
+                    <div class="phone width">
+                        <label for="phone"><b>Phone Number</b></label><br><br>
+                        <input type= "tel" placeholder="+00  0000 000 000" class="text">
+                    </div>
+                    <div class="website width">
+                        <label for="website"><b>Website</b></label><br><br>
+                        <input type="url" placeholder="e.g. https://google.com" class="text">
+                    </div>
+                </div>
+                <div class="flex last">
+                    <div class="pass width">
+                        <label for="password"><b>Password</b></label><br><br>
+                        <input type="password" placeholder="Your Password" class="text">
+                    </div>
+                    <div class="repass width">
+                        <label for="repassword"><b>Re-Type Password</b></label><br><br>
+                        <input type="password" placeholder="Your Password" class="text">
+                    </div>
+                </div>
+                <div class="check">
+                    <div class="box">
+                        <input type="checkbox">
+                    </div>
+                    <div class="p">
+                        creating an account means that you're okay with our <a href="#">terms</a> and <a href="#">conditions</a> and our <a href="#">privacy policy</a>
+                    </div>
+                </div>
+                <div class="but">
+                    <button type="button">Register</button>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+</html>
