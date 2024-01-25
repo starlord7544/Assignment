@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>TAGS</title>
+    <style>
+        :root {
+            --clr-1:  #dc143c; 
+            --clr-2: #008cff;
+            --clr-3: #d2691e;
+            --clr-4: #a7a7a7;
+            --clr-5: #d5d5d5;
+            --clr-6: #faebd7;
+            --clr-7: #00ffff99;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 20px;
+        }
+
+        header,footer {
+            background-color: #ffffff00;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid var(--clr-4);
+        }
+        header {
+            border-radius: 10px 10px 0px 0px;
+        }
+        footer {
+            border-radius: 10px;
+        }
+        nav {
+            background-color: #afafaf86;
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            border: 1px solid var(--clr-4); 
+        }
+        details {
+            padding-top: 20px;
+            
+        }
+        #main {
+            border-radius: 0px 0px 10px 10px;
+        }
+        section,article,form,aside,button {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid var(--clr-4);
+            border-radius: 10px;  
+        }
+        mark {
+            background-color: var(--clr-5);
+        }
+        hr {
+            margin-bottom: 20px;
+            width: 90%;
+        }
+
+        button:hover {
+            font-size: 1.2rem;
+            background-color: var(--clr-7);
+        }
+        button:active {
+            background-color: var(--clr-1);
+        }
+        .flex {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        @media (max-width: 660px) {
+            .flex {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                padding: 20px;
+            }
+
+        }
+
+        .items {
+            padding: 10px;
+        }
+        .center {
+            justify-content: center;
+        }
+        a:link {
+            color: var(--clr-2);
+            font-size: 1.2rem;
+        }
+        a:hover {
+            font-size: 1.4rem;
+            border: 1px solid var(--clr-4);
+            border-radius: 10px;
+            padding: 10px;
+            background-color: var(--clr-6);
+        }
+        a:active {
+            background-color: var(--clr-1);
+        }
+        a.visited {
+            color: var(--clr-3);
+        }
+
+
+    </style>
+</head>
+
+<body>
+    
+    <header>
+        <h1><u>HTML Tags</u></h1>
+    </header>
+    <nav>
+        <div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <ol>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ol>
+        </div>
+    </nav>
+
+    <section id="main">
+        <h2>Introduction</h2>
+        <p>HTML tags are like keywords which defines that how web
+           browser will format and display the content.</p>
+        <p>
+            An HTML file must have some essential tags so 
+            that web browser can differentiate between a simple
+            text and HTML text. You can use as many tags 
+            you want as per your code requirement.
+        </p>
+    </section>
+
+    <hr>
+
+    <article>
+        <h2>Main Section</h2>
+        <p>This section contains the main content of the page.</p>
+    </article>
+
+    <hr>
+
+    <aside>
+        <h2>Sidebar</h2>
+        <p>This is a sidebar providing additional information or unrelated content. 
+            <br> <b><i>like</i></b> </p>
+            <h3>Advertisements</h3>
+            <p>This sidebar is sponsered by ExplorIN.</p>
+        <p></p>
+    </aside>
+
+    <hr>
+
+    <section>
+        <h2>Image & Table section</h2>
+        <div class="flex">
+            <div>
+                
+                <figure>
+                    <img src="https://www.vedantu.com/question-sets/bc1faa5d-a439-4f9a-9714-a1b0d9450bac4071310209976369506.png"
+                height="200" alt="web-d">
+                    <figcaption>
+                        Fig. x=4y
+                    </figcaption>
+                </figure>
+            </div>
+            <div style="padding-left: 50px;">
+                <table border="3px">
+                    <tr bgcolor="lightgrey" align="center">
+                        <th bgcolor="grey" width="20px">X</th>
+                        <td width="20px">0</td>
+                        <td width="20px">4</td>
+                        <td width="20px">8</td>
+                        <td width="20px">12</td>
+                    </tr>
+                    <tr bgcolor="lightgrey" align="center">
+                        <th bgcolor="grey">Y</th>
+                        <td>-3</td><td>2</td><td>-1</td><td>0</td>
+                    </tr>
+                    <tr>
+                        <th colspan="5">X=4Y</th>
+                    </tr>
+                </table>
+                <details>
+                    <summary><mark ><u><b>Click Here</b></u></mark></summary>
+                    <ul>
+                        <li>Info 1</li>
+                        <li>Info 2</li>
+                        <li>Info 3</li>
+                    </ul>
+                </details>
+            </div>
+        </div>
+        <div>
+            <h2>More Info</h2>
+            <iframe src="https://en.wikipedia.org/wiki/Mathematics" frameborder="0" width="600px" height="350"></iframe>
+        </div>
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>Form Section</h2>
+        <form>
+            <div>
+                <lable for="fname">Name:</lable>
+                <input type="text" id="fname" name="fname" placeholder="Full Name">
+            </div>
+            <br>
+            <div>
+                Gender: <br><br>
+                <label>Male</label>
+                <input type="radio" name="gender" id="gender">
+                <label>Female</label>
+                <input type="radio" name="gender" id="gender">
+            </div>
+            <br>
+            <div>
+                Languages: <br> <br>
+                <label>C++</label>
+                <input type="checkbox">
+                <label>HTML</label>
+                <input type="checkbox">
+                <label>CSS</label>
+                <input type="checkbox">
+                <label>JavaScript</label>
+                <input type="checkbox">
+            </div>
+            <br>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" text id="email" placeholder="Enter Email address">
+            </div>
+            <br>
+            <div>
+                <label for="pass">Password</label>
+                <input type="password" name="pass" id="pass" placeholder="*******">
+            </div>
+            <div>
+                <br>
+                <input type="submit" style="margin-right: 10px;">
+                <input type="reset">
+            </div>
+            <br>
+            <div>
+                <p>Date: <time datetime="02-01-2024">2<sup>nd</sup> January 2024</time></p>
+            </div>
+            
+
+        </form>
+
+    </section>
+
+    <hr>
+
+    <section>
+        <h2>CSS Pseudo-classes section</h2><br>
+        <div class="flex center">
+            <div class="items">
+                <button>
+                Click Me 
+            </button>
+            </div>
+            <div class="items">
+                <a href="google.com">Google</a>
+            </div>
+        </div>
+        
+
+    </section>
+
+    <hr>
+
+    <footer>
+        <p><b>&COPY; Sidhant Sreshtha</b></p>
+    </footer>
+
+</body>
+
+</html>
