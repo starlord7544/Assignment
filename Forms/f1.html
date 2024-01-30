@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* transition: all 0.2s ease-in-out; */
+        }
+        #hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* border: 1px solid blue; */
+            height: 100%;
+            padding: 30px;
+        }
+        .head {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 20px;
+        }
+        form {
+            /* border: 1px solid purple; */
+            border: 1px solid rgba(0, 0, 0, 0.171);
+            border-radius: 10px;
+            width: 90vw;
+            background-color: #f2f2f2;
+        }
+        .mob, .pass ,.button{
+            /* border: 1px solid red; */
+            padding: 0px 1vw;
+            margin: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        input {
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.522);
+        }
+        .button input{
+            width: 100px;
+            margin-top: 0%;
+        }
+    </style>
+</head>
+<body>
+    <section id="hero">
+        <form id="form">
+            <div class="head">
+                <h1>Registration Form</h1>
+            </div>
+            <div class="mob">
+                <label for="number">Mobile No:</label>
+                <input type="text" name="number" id="number" placeholder="Eg- 0123456789">
+            </div>
+            <!-- <div class="pass">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" placeholder="Enter Password">
+                <div class="showpass">
+                    <input type="checkbox"> Show Password
+                </div>
+            </div> -->
+            <div class="button">
+                <input type="button" value="Register" id="button">
+            </div>
+        </form>
+    </section>
+    <script defer>
+        const number = document.getElementById ('number')
+        // const password = document.getElementById ('password') 
+        const submit = document.getElementById('button')
+        
+        submit.addEventListener('click' , function (event){
+            event.preventDefault()
+            const flag1 = checkNumber()
+            if (flag1 === false){
+                return
+            }
+            const flag2 = checkLength()
+            if (flag1 === true && flag2 === true){
+                alert('Registration successful')
+            }
+        })
+
+        function checkLength() {
+            const len = number.value.length
+            if (len < 3 || len == 0){
+                alert('Please enter a number with a minimum of three digits.')
+                return false
+            }
+            else if (len > 10) {
+                alert('Please enter a number with a maximum of ten digits.')
+                return false
+            }
+            else {
+                return true
+            }
+        }
+
+        function checkNumber() {
+            const num = number.value;
+            if (!/^\d+$/.test(num)) {
+                alert('Please enter a numeric value only.')
+                return false
+            } else {
+                return true
+            }
+        }
+
+        number.addEventListener('keydown', function (event){
+            if (event.key === 'Enter'){
+                event.preventDefault()
+                submit.click()
+            }
+        })
+    </script>
+</body>
+</html>
