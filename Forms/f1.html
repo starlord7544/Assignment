@@ -122,7 +122,7 @@
         number.addEventListener('input', function (event){
             flag1 = checkNumber()
             flag2 = checkLength()
-            if (flag1 == flag1 || flag2 == false) {
+            if (flag1 == false || flag2 == false) {
                 msg.style.display = "block"
             }
             if (event.key === 'Enter'){
@@ -165,15 +165,19 @@
         }
 
         function checkNumber() {
-            const num = number.value;
-            for (let i = 0; i < num.length; i++) {
-                const charCode = num.charCodeAt(i);
+            const num = number.value
+            const len = number.value.length
+            for (let i = 0; i < len; i++) {
+                const charCode = num.charCodeAt(i)
                 if (charCode < 48 || charCode > 57) {
-                    charError.style.display = "block";
-                    // maxError.style.display = "none";
-                    // minError.style.display = "none";
+                    charError.style.display = "block"
+                    // maxError.style.display = "none"
+                    // minError.style.display = "none"
                     return false;
                 }
+                // else if (num === "") {
+                //     charError.style.display = "none";
+                // }
                 else {
                     charError.style.display = "none";
                 }
