@@ -14,6 +14,9 @@
             background-color: var(--clr-accent);
             color: white;
         }
+        /* input[type=text]:focus {
+            border: var(--clr-accent) 1px solid;
+        } */
         :root {
             --clr-foreground: #FFF3F3;
             --clr-background: #ffd8c9;
@@ -68,8 +71,9 @@
             border: none;
             box-shadow: none;
         }
-        .message p {
+        .message p, .message li{
             display: none;
+            margin: 5px;
         }
     </style>
 </head>
@@ -84,9 +88,12 @@
                 <input type="text" name="number" id="number" placeholder="Eg- 0123456789">
             </div>
             <div class="message">
-                <p id="one">Validation Error: <br> Kindly input a number consisting of a minimum of three digits.</p>
-                <p id="two">Validation Error: <br> Kindly input a number consisting of a maximum of ten digits.</p>
-                <p id="three">Validation Error: <br>Kindly input numerical values only.</p>
+                <p id="msg">Validation Error:</p>
+                <ul>
+                    <li id="one">Kindly input a number consisting of a minimum of three digits.</li>
+                    <li id="two">Kindly input a number consisting of a maximum of ten digits.</li>
+                    <li id="three">Kindly input numerical values only.</li>
+                </ul>
             </div>
             <!-- <div class="pass">
                 <label for="password">Password:</label>
@@ -108,13 +115,15 @@
         const minError  = document.getElementById('one')
         const maxError  = document.getElementById('two')
         const charError = document.getElementById('three')
+        const msgError  = document.getElementById('msg')
 
         var flag1 = 0
         var flag2 = 0
         number.addEventListener('input', function (event){
             flag1 = checkNumber()
-            if (flag1 == true){
-                flag2 = checkLength()
+            flag2 = checkLength()
+            if (flag1 == flag1 || flag2 == false) {
+                msg.style.display = "block"
             }
             if (event.key === 'Enter'){
                 event.preventDefault()
@@ -135,22 +144,22 @@
         function checkLength() {
             const len = number.value.length
             if (len < 3 && len > 0){
-                
                 minError.style.display = "block"
                 maxError.style.display = "none"
-                charError.style.display = "none"
+                // charError.style.display = "none"
                 return false
             }
             else if (len > 10) {
                 maxError.style.display = "block"
                 minError.style.display = "none"
-                charError.style.display = "none"
+                // charError.style.display = "none"
                 return false
             }
             else {
                 maxError.style.display = "none"
                 minError.style.display = "none"
-                charError.style.display = "none"
+                // charError.style.display = "none"
+                msg.style.display = "none"
                 return true
             }
         }
@@ -161,9 +170,12 @@
                 const charCode = num.charCodeAt(i);
                 if (charCode < 48 || charCode > 57) {
                     charError.style.display = "block";
-                    maxError.style.display = "none";
-                    minError.style.display = "none";
+                    // maxError.style.display = "none";
+                    // minError.style.display = "none";
                     return false;
+                }
+                else {
+                    charError.style.display = "none";
                 }
             }
             return true;
