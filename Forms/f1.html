@@ -10,6 +10,10 @@
             font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             /* transition: all 0.2s ease-in-out; */
         }
+        ::selection {
+            background-color: var(--clr-accent);
+            color: white;
+        }
         :root {
             --clr-foreground: #FFF3F3;
             --clr-background: #ffd8c9;
@@ -80,9 +84,9 @@
                 <input type="text" name="number" id="number" placeholder="Eg- 0123456789">
             </div>
             <div class="message">
-                <p id="one">Please enter a number with a minimum of three digits.</p>
-                <p id="two">Please enter a number with a maximum of ten digits.</p>
-                <p id="three">Please enter numerical values only.</p>
+                <p id="one">Validation Error: <br> Kindly input a number consisting of a minimum of three digits.</p>
+                <p id="two">Validation Error: <br> Kindly input a number consisting of a maximum of ten digits.</p>
+                <p id="three">Validation Error: <br>Kindly input numerical values only.</p>
             </div>
             <!-- <div class="pass">
                 <label for="password">Password:</label>
