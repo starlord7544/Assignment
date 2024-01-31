@@ -1,0 +1,81 @@
+* {
+    margin: 0px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* transition: all 0.2s ease-in-out; */
+}
+:root {
+    --clr-foreground: #FFF3F3;
+    --clr-background: #ffd8c9;
+    --clr-accent: #ffaa7c;
+    --clr-input: #ffffff;
+}
+::selection {
+    background-color: var(--clr-accent);
+    color: white;
+}
+
+#number:focus-visible , #password:focus-visible{
+    /* border: none; */
+    outline: none;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+    /* outline: 1px solid #ffaa7c69; */
+}
+
+body {
+    background-color: var(--clr-background);
+}
+#hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border: 1px solid blue; */
+    height: 100%;
+    padding: 30px;
+}
+.head {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+}
+form {
+    /* border: 1px solid purple; */
+    border: 1px solid rgba(0, 0, 0, 0.171);
+    border-radius: 10px;
+    width: 90vw;
+    background-color: var(--clr-foreground);
+}
+.mob, .pass ,.button, .message, .requirements{
+    /* border: 1px solid red; */
+    padding: 0px 1vw;
+    margin: 20px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+input {
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    background-color: var(--clr-input);
+}
+.button input{
+    width: 100px;
+    margin-top: 0%;
+    background-color: var(--clr-accent);
+    border: none;
+    box-shadow: none;
+}
+.message p{
+    display: none;
+    margin: 5px;
+}
+p {
+    font-size: 0.9rem;
+}
+.requirements p {
+    display: block;
+    padding: 2px;
+}
