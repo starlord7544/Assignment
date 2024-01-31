@@ -4,78 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Number Form</title>
-    <style>
-        * {
-            margin: 0px;
-            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* transition: all 0.2s ease-in-out; */
-        }
-        ::selection {
-            background-color: var(--clr-accent);
-            color: white;
-        }
-        /* input[type=text]:focus {
-            border: var(--clr-accent) 1px solid;
-        } */
-        :root {
-            --clr-foreground: #FFF3F3;
-            --clr-background: #ffd8c9;
-            --clr-accent: #ffaa7c;
-            --clr-input: #ffffff;
-        }
-        body {
-            background-color: var(--clr-background);
-        }
-        #hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            /* border: 1px solid blue; */
-            height: 100%;
-            padding: 30px;
-        }
-        .head {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 20px;
-        }
-        form {
-            /* border: 1px solid purple; */
-            border: 1px solid rgba(0, 0, 0, 0.171);
-            border-radius: 10px;
-            width: 90vw;
-            background-color: var(--clr-foreground);
-        }
-        .mob, .pass ,.button, .message{
-            /* border: 1px solid red; */
-            padding: 0px 1vw;
-            margin: 20px 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-        }
-        input {
-            padding: 10px;
-            margin-top: 20px;
-            border-radius: 5px;
-            border: none;
-            /* border: 1px solid rgba(0, 0, 0, 0.522); */
-            background-color: var(--clr-input);
-            box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-        }
-        .button input{
-            width: 100px;
-            margin-top: 0%;
-            background-color: var(--clr-accent);
-            border: none;
-            box-shadow: none;
-        }
-        .message p, .message li{
-            display: none;
-            margin: 5px;
-        }
-    </style>
+    <!-- <script src="./script.js"></script> -->
+    <link rel="stylesheet" href="formstyle.css">
 </head>
 <body>
     <section id="hero">
@@ -88,12 +18,9 @@
                 <input type="text" name="number" id="number" placeholder="Eg- 0123456789">
             </div>
             <div class="message">
-                <p id="msg">Validation Error:</p>
-                <ul>
-                    <li id="one">Kindly input a number consisting of a minimum of three digits.</li>
-                    <li id="two">Kindly input a number consisting of a maximum of ten digits.</li>
-                    <li id="three">Kindly input numerical values only.</li>
-                </ul>
+                <p id="one">Validation Error: <br> Kindly input a number consisting of a minimum of three digits.</p>
+                <p id="two">Validation Error: <br> Kindly input a number consisting of a maximum of ten digits.</p>
+                <p id="three">Validation Error: <br>Kindly input numerical values only.</p>
             </div>
             <!-- <div class="pass">
                 <label for="password">Password:</label>
@@ -107,7 +34,7 @@
             </div>
         </form>
     </section>
-    <script defer>
+    <script>
         const number = document.getElementById ('number')
         // const password = document.getElementById ('password') 
         const submit    = document.getElementById('button')
@@ -115,76 +42,63 @@
         const minError  = document.getElementById('one')
         const maxError  = document.getElementById('two')
         const charError = document.getElementById('three')
-        const msgError  = document.getElementById('msg')
-
         var flag1 = 0
         var flag2 = 0
         number.addEventListener('input', function (event){
             flag1 = checkNumber()
-            flag2 = checkLength()
-            if (flag1 == false || flag2 == false) {
-                msg.style.display = "block"
+            if (flag1 == true){
+                flag2 = checkLength()
             }
             if (event.key === 'Enter'){
                 event.preventDefault()
                 submit.click()
             }
         })
-        
+
         submit.addEventListener('click' , function (event){
             event.preventDefault()
             if (flag1 === false || flag2 === false){
-                alert('Registration Failed \nKindly check the input conditions')
+                alert('Registration Failed\nKindly check the input conditions')
             }
             else if (flag1 === true && flag2 === true){
                 alert('Registration successful')
             }
         })
-
         function checkLength() {
             const len = number.value.length
             if (len < 3 && len > 0){
+                
                 minError.style.display = "block"
                 maxError.style.display = "none"
-                // charError.style.display = "none"
+                charError.style.display = "none"
                 return false
             }
             else if (len > 10) {
                 maxError.style.display = "block"
                 minError.style.display = "none"
-                // charError.style.display = "none"
+                charError.style.display = "none"
                 return false
             }
             else {
                 maxError.style.display = "none"
                 minError.style.display = "none"
-                // charError.style.display = "none"
-                msg.style.display = "none"
+                charError.style.display = "none"
                 return true
             }
         }
-
         function checkNumber() {
-            const num = number.value
-            const len = number.value.length
-            for (let i = 0; i < len; i++) {
-                const charCode = num.charCodeAt(i)
+            const num = number.value;
+            for (let i = 0; i < num.length; i++) {
+                const charCode = num.charCodeAt(i);
                 if (charCode < 48 || charCode > 57) {
-                    charError.style.display = "block"
-                    // maxError.style.display = "none"
-                    // minError.style.display = "none"
+                    charError.style.display = "block";
+                    maxError.style.display = "none";
+                    minError.style.display = "none";
                     return false;
-                }
-                // else if (num === "") {
-                //     charError.style.display = "none";
-                // }
-                else {
-                    charError.style.display = "none";
                 }
             }
             return true;
         }
-
         number.addEventListener('keydown', function (event){
             if (event.key === 'Enter'){
                 event.preventDefault()
