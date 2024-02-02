@@ -9,16 +9,9 @@ const req1      = document.getElementById ('req1')
 const req2      = document.getElementById ('req2')
 const req3      = document.getElementById ('req3')
 const req4      = document.getElementById ('req4')
-const form      = document.getElementById ('form')
 
-let flag1 = 0
-let flag2 = 0
-let flag3 = 0
-let flag4 = 0
-let flag5 = 0
-let flag6 = 0
-let flagPass = 0
-let flagNum = 0
+let flag1 = false
+let flag2 = false
 
 number.addEventListener('input', function (event){
     flag1 = checkNumber()
@@ -28,8 +21,7 @@ number.addEventListener('input', function (event){
     if (event.key === 'Enter'){
         event.preventDefault()
         submit.click()
-    }
-    
+    }    
 })
 
 function checkLength() {
@@ -65,16 +57,15 @@ function checkNumber() {
             return false;
         }
     }
+    charError.style.display = "none";
     return true;
 }
 
 password.addEventListener('input', function (event){
-    flag3 = HigherPass(checkPassChar() , req1)
-    flag4 = HigherPass(checkPassLower() , req2)
-    flag5 = HigherPass(checkPassUpper() , req3)
-    flag6 = HigherPass(checkPassNumber() , req4)
-
-    
+    checkPasswordRequirement(checkSpecialCharacters() , req1)
+    checkPasswordRequirement(checkForLowerCase() , req2)
+    checkPasswordRequirement(checkForUpperCase() , req3)
+    checkPasswordRequirement(checkForNumericChars() , req4)
 
     if (event.key === 'Enter'){
         event.preventDefault()
@@ -82,7 +73,7 @@ password.addEventListener('input', function (event){
     }
 })
 
-function HigherPass( checkCondition , reqNumber) {
+function checkPasswordRequirement( checkCondition , reqNumber) {
     return function() {
         const pass = password.value
         for (let i = 0; i < pass.length; i++) {
@@ -95,43 +86,54 @@ function HigherPass( checkCondition , reqNumber) {
         reqNumber.style.display = 'block'
         return false;
     }
-}
-
-const checkPassChar = HigherPass(
+} 
+const checkSpecialCharacters = checkPasswordRequirement(
     charCode => (charCode >= 33 && charCode <= 47) || (charCode >= 58 && charCode <= 64) || 
                 (charCode >= 91 && charCode <= 96) || (charCode >= 123 && charCode <= 126),
     req1
 )
 
-const checkPassLower = HigherPass(
+const checkForLowerCase = checkPasswordRequirement(
     charCode => charCode >= 97 && charCode <= 122,
     req2
 )
 
-const checkPassUpper = HigherPass(
+const checkForUpperCase = checkPasswordRequirement(
     charCode => charCode >= 65 && charCode <= 90,
     req3
 )
 
-const checkPassNumber = HigherPass(
+const checkForNumericChars = checkPasswordRequirement(
     charCode => charCode >= 48 && charCode <= 57,
     req4
 )
 
+function checkDisplayStyle(reqNumber) {
+    return (reqNumber.style.display === 'none')    
+}
+
 submit.addEventListener('click' , function (event){
-    event.preventDefault()
-    if (flag1 === false || flag2 === false) {
-        alert('Registration Failed\nKindly check the input conditions ')
+    event.preventDefault();
+
+
+    if (minError.style.display == 'none' && maxError.style.display == 'none') {
+        flag2 = true;
+    }
+    else {
+        flag2 = false;
+    }
+
+    let flag7 = checkDisplayStyle(req1); 
+    let flag8 = checkDisplayStyle(req2);
+    let flag9 = checkDisplayStyle(req3);
+    let flag10= checkDisplayStyle(req4);
+
+    console.log(`flag1 : ${flag1}, flag2 : ${flag2}, flag7 : ${flag7}, flag8 : ${flag8}, flag9 : ${flag9}, flag10 : ${flag10}`);
+    if ( flag1 === true && flag2 === true && flag7 === true && flag8 === true && flag9 === true && flag10 === true ) {
+        alert('Registration successful');
     } 
-
-    if (flag3 === true && flag4 === true && falg5 === true && flag6 === true) {
-        flagPass = true
+    else {
+        alert('Registration Failed\nKindly check the input conditions ')
     }
-
-    // if (flagPass === false){
-    //     alert('Registration Failed\nKindly check the input conditions 799')
-    // }
-    else if (flag1 === true && flag2 === true) {
-        alert('Registration successful')
-    }
+        
 })
