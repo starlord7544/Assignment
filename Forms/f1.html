@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Number Form</title>
-    <link rel="stylesheet" href="formstyle.css">
+    <link rel="stylesheet" href="formstyle.css" />
 </head>
+
 <body>
     <section id="hero">
         <form id="form">
@@ -14,33 +16,53 @@
             </div>
             <div class="mob">
                 <label for="number">Mobile No:</label>
-                <input type="text" name="number" id="number" placeholder="Eg- 0123456789" required>
+                <input type="text" name="number" id="number" placeholder="Eg- 0123456789" required />
             </div>
             <div class="message">
-                <p id="one">Validation Error: <br> Kindly input a number consisting of a minimum of three digits.</p>
-                <p id="two">Validation Error: <br> Kindly input a number consisting of a maximum of ten digits.</p>
-                <p id="three">Validation Error: <br>Kindly input numerical values only.</p>
+                <p id="one">
+                    Validation Error: <br />
+                    Kindly input a number consisting of a minimum of three digits.
+                </p>
+                <p id="two">
+                    Validation Error: <br />
+                    Kindly input a number consisting of a maximum of ten digits.
+                </p>
+                <p id="three">
+                    Validation Error: <br />Kindly input numerical values only.
+                </p>
             </div>
             <div class="pass">
                 <label for="password">Password:</label>
-                <input type="text" name="password" id="password" placeholder="Enter Password" required>
+                <input type="text" name="password" id="password" placeholder="Enter Password" required />
                 <!-- <div class="showpass">
                     <input type="checkbox" name="check" id="check"> 
                     <label for="check">Show password</label>
                 </div> -->
             </div>
             <div class="requirements">
-                <p id="req1">The password must include at least one Special character (!,@,#,$,& ...)</p>
-                <p id="req2">The password must include at least one LowerCase character(a,b,c ... z)</p>
-                <p id="req3">The password must include at least one UpperCase character(A,B,C ... Z)</p>
-                <p id="req4">The password must include at least one Numeric character (1,2,3 ... 9)</p>
-                
+                <p id="req1">
+                    The password must include at least one Special character (!,@,#,$,&
+                    ...)
+                </p>
+                <p id="req2">
+                    The password must include at least one LowerCase character(a,b,c ...
+                    z)
+                </p>
+                <p id="req3">
+                    The password must include at least one UpperCase character(A,B,C ...
+                    Z)
+                </p>
+                <p id="req4">
+                    The password must include at least one Numeric character (1,2,3 ...
+                    9)
+                </p>
             </div>
             <div class="button">
-                <input type="submit" value="Register" id="button">
+                <input type="submit" value="Register" id="button" />
             </div>
         </form>
     </section>
     <script defer src="./script.js"></script>
 </body>
+
 </html>
