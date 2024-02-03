@@ -9,9 +9,23 @@ const req1      = document.getElementById ('req1')
 const req2      = document.getElementById ('req2')
 const req3      = document.getElementById ('req3')
 const req4      = document.getElementById ('req4')
+const checkbox  = document.getElementById ('checkbox')
 
 let flag1 = false
 let flag2 = false
+
+checkbox.addEventListener('change', function (event){
+    event.preventDefault()
+    if (checkbox.checked == true){
+        // console.log('Checkbox on')
+        password.type = 'text'
+    }
+    else{
+        // console.log('Checkbox off')
+        password.type = 'password'
+    }
+    
+})
 
 number.addEventListener('input', function (event){
     flag1 = checkNumber()
@@ -128,7 +142,7 @@ submit.addEventListener('click' , function (event){
     let flag9 = checkDisplayStyle(req3);
     let flag10= checkDisplayStyle(req4);
 
-    console.log(`flag1 : ${flag1}, flag2 : ${flag2}, flag7 : ${flag7}, flag8 : ${flag8}, flag9 : ${flag9}, flag10 : ${flag10}`);
+    // console.log(`flag1 : ${flag1}, flag2 : ${flag2}, flag7 : ${flag7}, flag8 : ${flag8}, flag9 : ${flag9}, flag10 : ${flag10}`);
     if ( flag1 === true && flag2 === true && flag7 === true && flag8 === true && flag9 === true && flag10 === true ) {
         alert('Registration successful');
     } 
