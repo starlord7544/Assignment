@@ -13,18 +13,21 @@ const checkbox  = document.getElementById ('checkbox')
 
 let flag1 = false
 let flag2 = false
+let flagPass = false
+let flag7 = false
+let flag8 = false
+let flag9 = false
+let flag10 = false
+
 
 checkbox.addEventListener('change', function (event){
     event.preventDefault()
     if (checkbox.checked == true){
-        // console.log('Checkbox on')
         password.type = 'text'
     }
     else{
-        // console.log('Checkbox off')
         password.type = 'password'
     }
-    
 })
 
 number.addEventListener('input', function (event){
@@ -76,59 +79,80 @@ function checkNumber() {
 }
 
 password.addEventListener('input', function (event){
-    checkPasswordRequirement(checkSpecialCharacters() , req1)
-    checkPasswordRequirement(checkForLowerCase() , req2)
-    checkPasswordRequirement(checkForUpperCase() , req3)
-    checkPasswordRequirement(checkForNumericChars() , req4)
-
+    const passVal = password.value
+    flagPass = checkPasswordRequirement(passVal)
     if (event.key === 'Enter'){
         event.preventDefault()
         submit.click()
     }
 })
 
-function checkPasswordRequirement( checkCondition , reqNumber) {
-    return function() {
-        const pass = password.value
-        for (let i = 0; i < pass.length; i++) {
-            const charCode = pass.charCodeAt(i)
-            if (checkCondition(charCode)) {
-                reqNumber.style.display = 'none'
-                return true;
-            }
-        }
-        reqNumber.style.display = 'block'
-        return false;
+function checkPasswordRequirement(passVal) {
+    flag7 = checkSpecialCharacters(passVal)
+    flag8 = checkForLowerCase(passVal)
+    flag9 = checkForUpperCase(passVal)
+    flag10 = checkForNumericChars(passVal)
+
+    if (flag7 === true && flag8 === true && flag9 === true && flag10 === true){
+        return true
+    }
+    else {
+        return false
     }
 } 
-const checkSpecialCharacters = checkPasswordRequirement(
-    charCode => (charCode >= 33 && charCode <= 47) || (charCode >= 58 && charCode <= 64) || 
-                (charCode >= 91 && charCode <= 96) || (charCode >= 123 && charCode <= 126),
-    req1
-)
 
-const checkForLowerCase = checkPasswordRequirement(
-    charCode => charCode >= 97 && charCode <= 122,
-    req2
-)
+function checkSpecialCharacters(password) {
+    for (let i = 0; i < password.length; i++) {
+        const charCode = password.charCodeAt(i);
+        if ((charCode >= 33 && charCode <= 47) || (charCode >= 58 && charCode <= 64) || 
+            (charCode >= 91 && charCode <= 96) || (charCode >= 123 && charCode <= 126)) {
+                req1.style.display = 'none'
+                return true;
+        }
+    }
+    req1.style.display = 'block'
+    return false;
+}
 
-const checkForUpperCase = checkPasswordRequirement(
-    charCode => charCode >= 65 && charCode <= 90,
-    req3
-)
 
-const checkForNumericChars = checkPasswordRequirement(
-    charCode => charCode >= 48 && charCode <= 57,
-    req4
-)
+function checkForLowerCase(password) {
+    for (let i = 0; i < password.length; i++) {
+        const charCode = password.charCodeAt(i);
+        if (charCode >= 97 && charCode <= 122) {
+            req2.style.display = 'none'
+            return true;
+        }
+    }
+    req2.style.display = 'block'
+    return false;
+}
 
-function checkDisplayStyle(reqNumber) {
-    return (reqNumber.style.display === 'none')    
+function checkForUpperCase(password) {
+    for (let i = 0; i < password.length; i++) {
+        const charCode = password.charCodeAt(i);
+        if (charCode >= 65 && charCode <= 90) {
+            req3.style.display = 'none'
+            return true;
+        }
+    }
+    req3.style.display = 'block'
+    return false;
+}
+
+function checkForNumericChars(password) {
+    for (let i = 0; i < password.length; i++) {
+        const charCode = password.charCodeAt(i);
+        if (charCode >= 48 && charCode <= 57) {
+            req4.style.display = 'none'
+            return true;
+        }
+    }
+    req4.style.display = 'block'
+    return false;
 }
 
 submit.addEventListener('click' , function (event){
     event.preventDefault();
-
 
     if (minError.style.display == 'none' && maxError.style.display == 'none') {
         flag2 = true;
@@ -137,13 +161,7 @@ submit.addEventListener('click' , function (event){
         flag2 = false;
     }
 
-    let flag7 = checkDisplayStyle(req1); 
-    let flag8 = checkDisplayStyle(req2);
-    let flag9 = checkDisplayStyle(req3);
-    let flag10= checkDisplayStyle(req4);
-
-    // console.log(`flag1 : ${flag1}, flag2 : ${flag2}, flag7 : ${flag7}, flag8 : ${flag8}, flag9 : ${flag9}, flag10 : ${flag10}`);
-    if ( flag1 === true && flag2 === true && flag7 === true && flag8 === true && flag9 === true && flag10 === true ) {
+    if ( flag1 === true && flag2 === true && flagPass === true) {
         alert('Registration successful');
     } 
     else {
