@@ -1,5 +1,5 @@
-const task = document.getElementById('task')
-const taskBox = document.getElementById('taskBox')
+const task      = document.getElementById('task')
+const taskBox   = document.getElementById('taskBox')
 const addButton = document.getElementById('add-task')
 
 task.addEventListener('keyup', function (event){
@@ -67,17 +67,22 @@ function addTask (task) {
             divMsg.contentEditable = true
             divMsg.focus()
             editButton.setAttribute('value', 'Save')
+            divMsg.addEventListener('keydown', function(event){
+                if (event.key  === 'Enter'){
+                    console.log('save')
+                    divMsg.blur()
+                    editButton.setAttribute('value', 'Edit')
+                    divMsg.contentEditable = false
+                }
+            })
         }
         else {
             console.log('save')
-            divMsg.focus()
+            divMsg.blur()
             editButton.setAttribute('value', 'Edit')
             divMsg.contentEditable = false
         }
-
     })
-
-
 
     checkbox.addEventListener('change', function(event){
         if (checkbox.checked == true){
@@ -88,28 +93,6 @@ function addTask (task) {
             inside.style.backgroundColor = 'var(--clr-input)'
             divMsg.style.textDecoration = 'none'
         }
-
-        // event.preventDefault()
-        // tick(divMsg, inside)
     })
-
-    // divMsg.addEventListener('click', function(event){
-    //     // tick(divMsg,inside)
-    //     // event.stopPropagation()
-    //     checkbox.click()
-    // })
-
-    // function tick (divMsg, inside){
-
-    //     var style = window.getComputedStyle(divMsg)
-    //     if (style.getPropertyValue('text-decoration') === 'none'){
-    //         inside.style.backgroundColor = 'var(--clr-checked)'
-    //         divMsg.style.textDecoration = 'line-through'
-    //     }
-    //     else if (style.getPropertyValue('text-decoration') === 'line-through'){
-    //         inside.style.backgroundColor = 'var(--clr-input)'
-    //         divMsg.style.textDecoration = 'none'
-    //     }
-    // }
 }
 
