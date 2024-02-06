@@ -31,15 +31,15 @@ input:checked {
 }
 
 header {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.5rem;
+    font-family: 'Rubik Doodle Shadow';
+    font-size: 2rem;
 }
 
 body {
     margin: 0px;
     padding: 0px;
     background-color: var(--clr-background);
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
 }
 #hero{
     display: flex;
