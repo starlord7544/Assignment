@@ -17,6 +17,8 @@ addButton.addEventListener('click', function (event){
     }
 })
 
+let isEditing = false
+
 function addTask (task) {
     const checkBoxDiv = document.createElement('div')
     checkBoxDiv.classList.add('check')
@@ -24,7 +26,6 @@ function addTask (task) {
     const checkbox = document.createElement('input')
     checkbox.setAttribute('type','checkbox')
     checkbox.classList.add('checkbox')
-
     checkBoxDiv.appendChild(checkbox)
 
     const divMsg = document.createElement('div');
@@ -55,44 +56,70 @@ function addTask (task) {
     inside.appendChild(buttons)
 
     taskBox.appendChild(inside)
+    
+    if (isEditing == false){
+        delButton.addEventListener('click', clickedDeleteButton)
+        editButton.addEventListener('click', clickedEditButton)
+        checkbox.addEventListener('change', clickedCheckBox)
+    }
+}
 
-    delButton.addEventListener('click', function (event){
-        event.preventDefault()
-        taskBox.removeChild(inside)
-    })
+function clickedDeleteButton (event) {
+    const delButton = event.target
+    const inside = delButton.parentElement.parentElement
+    const taskBox = inside.parentElement
+    taskBox.removeChild(inside)
+}
 
-    editButton.addEventListener('click', function (event){
-        event.preventDefault()
-        if (editButton.value == 'Edit'){
-            divMsg.contentEditable = true
-            divMsg.focus()
-            editButton.setAttribute('value', 'Save')
-            divMsg.addEventListener('keydown', function(event){
-                if (event.key  === 'Enter'){
-                    console.log('save')
-                    divMsg.blur()
-                    editButton.setAttribute('value', 'Edit')
-                    divMsg.contentEditable = false
-                }
-            })
-        }
-        else {
+function clickedCheckBox (event) {
+    const checkbox = event.target
+    const inside = checkbox.parentElement.parentElement
+    const divMsg = inside.querySelector('.taskMsg')
+
+    if (checkbox.checked == true){
+        inside.style.backgroundColor = 'var(--clr-checked)'
+        divMsg.style.textDecoration = 'line-through'
+    }
+    else{
+        inside.style.backgroundColor = 'var(--clr-input)'
+        divMsg.style.textDecoration = 'none'
+    }
+    console.log('checkbox changed')
+}
+
+function clickedEditButton (event){
+    event.preventDefault()
+    const editButton = event.target
+    const inside = editButton.parentElement.parentElement
+    const divMsg = inside.querySelector('.taskMsg')
+
+    if (editButton.value == 'Edit' && isEditing == false){
+        isEditing = true
+        divMsg.contentEditable = true
+        divMsg.focus()
+        editButton.setAttribute('value', 'Save')
+
+        function completeEdit() {
             console.log('save')
             divMsg.blur()
             editButton.setAttribute('value', 'Edit')
             divMsg.contentEditable = false
+            isEditing = false
+            editButton.removeEventListener('click', completeEdit)
         }
-    })
 
-    checkbox.addEventListener('change', function(event){
-        if (checkbox.checked == true){
-            inside.style.backgroundColor = 'var(--clr-checked)'
-            divMsg.style.textDecoration = 'line-through'
-        }
-        else{
-            inside.style.backgroundColor = 'var(--clr-input)'
-            divMsg.style.textDecoration = 'none'
-        }
-    })
+        editButton.addEventListener('click', completeEdit)
+
+        divMsg.addEventListener('keydown', function(event){
+            if (event.key  === 'Enter'){
+                completeEdit()
+            }
+        })
+    }
+    else if (isEditing == false){
+        console.log('save')
+        divMsg.blur()
+        editButton.setAttribute('value', 'Edit')
+        divMsg.contentEditable = false
+    }
 }
-
