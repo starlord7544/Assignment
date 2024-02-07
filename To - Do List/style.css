@@ -16,8 +16,14 @@
     color: white;
 }
 
-.divMsg:focus-visible {
+.taskMsg:focus-visible {
+    border: none;
     outline: none;
+    outline-color: var(--clr-input);
+}
+
+.inside:hover {
+    box-shadow: 0 0 10px  rgba(0, 0, 0, 0.5);
 }
 
 #task:focus-visible {
@@ -125,13 +131,20 @@ input {
 .check {
     padding:  0px 0px 0px 10px;
     z-index: 10;
+    /* border: 1px solid; */
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 .taskMsg {
     padding: 20px 10px;
+    padding-left: 0px;
     text-align: justify;
     width: 100%;
-    
+    /* border: 1px solid red; */
+
 }
 
 .buttons {
@@ -164,7 +177,7 @@ input {
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 279px) {
     
     .main {
         width: 85vw;
