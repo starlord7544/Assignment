@@ -23,7 +23,11 @@
 }
 
 .inside:hover {
-    box-shadow: 0 0 10px  rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px  rgba(0, 0, 0, 0.3);
+}
+
+.add-task:hover {
+    box-shadow: 0 0 15px  rgba(255, 170, 124,0.3);
 }
 
 #task:focus-visible {
@@ -75,6 +79,12 @@ body {
     flex-direction: column;
 }
 
+.greet {
+    width: 100%;
+    height: 23%;
+    color: rgb(41, 41, 41);
+}
+
 input {
     background-color: var(--clr-input);
     border-radius: 5px;
@@ -86,10 +96,11 @@ input {
 
 .add-task {
     padding-top: 2px;
-    width: 90px;
+    width: 80px;
     height: 30px;
     background-color: var(--clr-accent);
     border: none;
+    box-shadow: none;
 }
 
 .task-input {
@@ -131,7 +142,6 @@ input {
 .check {
     padding:  0px 0px 0px 10px;
     z-index: 10;
-    /* border: 1px solid; */
     height: 100%;
     align-items: center;
     justify-content: center;
@@ -143,6 +153,8 @@ input {
     padding-left: 0px;
     text-align: justify;
     width: 100%;
+    /* text-decoration: underline; */
+    text-decoration: none;
     /* border: 1px solid red; */
 
 }
@@ -174,6 +186,9 @@ input {
 @media screen and (max-width: 600px) {
     .main {
         width: 85vw;
+    }
+    .inside:hover {
+        box-shadow: 0 0 7px  rgba(0, 0, 0, 0.3);
     }
 }
 
