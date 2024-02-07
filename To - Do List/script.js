@@ -2,6 +2,13 @@ const task      = document.getElementById('task')
 const taskBox   = document.getElementById('taskBox')
 const addButton = document.getElementById('add-task')
 
+window.addEventListener('load', function(){
+    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || []
+    savedTasks.forEach(function(task){
+        addTask(task)
+    })
+})
+
 task.addEventListener('keyup', function (event){
     if (event.key === 'Enter'){
         addButton.click()
@@ -62,6 +69,8 @@ function addTask (task) {
         editButton.addEventListener('click', clickedEditButton)
         checkbox.addEventListener('change', clickedCheckBox)
     }
+
+    saveTasksToLocalStorage()
 }
 
 function clickedDeleteButton (event) {
@@ -69,6 +78,8 @@ function clickedDeleteButton (event) {
     const inside = delButton.parentElement.parentElement
     const taskBox = inside.parentElement
     taskBox.removeChild(inside)
+
+    saveTasksToLocalStorag()
 }
 
 function clickedCheckBox (event) {
@@ -79,12 +90,16 @@ function clickedCheckBox (event) {
     if (checkbox.checked == true){
         inside.style.backgroundColor = 'var(--clr-checked)'
         divMsg.style.textDecoration = 'line-through'
+        divMsg.style.opacity = '0.7'
     }
     else{
         inside.style.backgroundColor = 'var(--clr-input)'
         divMsg.style.textDecoration = 'none'
+        divMsg.style.opacity = '1'
     }
     console.log('checkbox changed')
+
+    saveTasksToLocalStorage()
 }
 
 function clickedEditButton (event){
@@ -94,19 +109,23 @@ function clickedEditButton (event){
     const divMsg = inside.querySelector('.taskMsg')
 
     if (editButton.value == 'Edit' && isEditing == false){
-        isEditing = true
-        divMsg.contentEditable = true
-        divMsg.focus()
-        editButton.setAttribute('value', 'Save')
-
         function completeEdit() {
             console.log('save')
             divMsg.blur()
             editButton.setAttribute('value', 'Edit')
+            divMsg.style.textDecoration = 'none'
             divMsg.contentEditable = false
             isEditing = false
             editButton.removeEventListener('click', completeEdit)
+
+            saveTasksToLocalStorage()
         }
+
+        isEditing = true
+        divMsg.contentEditable = true
+        divMsg.focus()
+        editButton.setAttribute('value', 'Save')
+        divMsg.style.textDecoration = 'underline'
 
         editButton.addEventListener('click', completeEdit)
 
@@ -122,4 +141,15 @@ function clickedEditButton (event){
         editButton.setAttribute('value', 'Edit')
         divMsg.contentEditable = false
     }
+    
+    saveTasksToLocalStorage()
+}
+
+function saveTasksToLocalStorage () {
+    const tasks = [];
+    const taskElements = taskBox.querySelectorAll('.taskMsg')
+    taskElements.forEach(function (taskElements){
+        tasks.push(taskElements.textContent)
+    })
+    localStorage.setItem('tasks', JSON.stringify(tasks))
 }
