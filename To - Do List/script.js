@@ -3,10 +3,11 @@ const taskBox   = document.getElementById('taskBox')
 const addButton = document.getElementById('add-task')
 const clrButton = document.getElementById('clear-all')
 
-window.addEventListener('load', function(){
-    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || []
-    savedTasks.forEach(function(task){
-        addTask(task)
+
+window.addEventListener('load', function () {
+    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    savedTasks.forEach(function (task) {
+        addTask(task.taskMsg, task.isChecked)
     })
 })
 
@@ -31,7 +32,7 @@ clrButton.addEventListener('click', function() {
 
 let isEditing = false
 
-function addTask (task) {
+function addTask (task, isChecked) {
     const checkBoxDiv = document.createElement('div')
     checkBoxDiv.classList.add('check')
 
@@ -47,7 +48,7 @@ function addTask (task) {
     const buttons = document.createElement('div')
     buttons.classList.add('buttons')
 
-    const delButton = document.createElement('input');
+    const delButton = document.createElement('input')
     delButton.setAttribute('type', 'button')
     delButton.setAttribute('value','Delete')
     delButton.classList.add('delete')
@@ -75,6 +76,14 @@ function addTask (task) {
     inside.appendChild(buttons)
 
     taskBox.appendChild(inside)
+
+    divMsg.textContent = task;
+    checkbox.checked = isChecked;
+    if (checkbox.checked === true) {
+        inside.style.backgroundColor = 'var(--clr-checked)'
+        divMsg.style.textDecoration = 'line-through'
+        divMsg.style.opacity = '0.7'
+    }
     
     delButton.addEventListener('click', function() {
         clickedDeleteButton (inside, taskBox)
@@ -89,7 +98,6 @@ function addTask (task) {
     saveButton.addEventListener('click', function(){
         clickedSaveButton(editButton, saveButton, divMsg)
     })
-    
     saveTasksToLocalStorage()
 }
 
@@ -99,7 +107,6 @@ function clickedSaveButton (editButton, saveButton, divMsg){
     divMsg.blur()
     editButton.style.display = 'block'
     saveButton.style.display = 'none'
-    divMsg.style.textDecoration = 'none'
     saveTasksToLocalStorage()
 }
 
@@ -110,7 +117,6 @@ function clickedEditButton (editButton, saveButton, divMsg){
         saveButton.style.display = 'block'
         divMsg.contentEditable = true
         divMsg.focus()
-        divMsg.style.textDecoration = 'underline'
 
         const range = document.createRange()
         const selection = window.getSelection()
@@ -150,12 +156,13 @@ function clickedCheckBox (inside, checkbox, divMsg) {
     saveTasksToLocalStorage()
 }
 
-
-function saveTasksToLocalStorage () {
-    const tasks = [];
-    const taskElements = taskBox.querySelectorAll('.taskMsg')
-    taskElements.forEach(function (taskElements){
-        tasks.push(taskElements.textContent)
-    })
+function saveTasksToLocalStorage() {
+    const tasks = []
+    const taskElements = taskBox.querySelectorAll('.inside')
+    taskElements.forEach(function (taskElement) {
+        const taskMsg = taskElement.querySelector('.taskMsg').textContent
+        const isChecked = taskElement.querySelector('.checkbox').checked
+        tasks.push({ taskMsg, isChecked })
+    });
     localStorage.setItem('tasks', JSON.stringify(tasks))
 }
