@@ -12,11 +12,16 @@
 <body>
     <section id="hero">
         <main class="main">
-            <header><h1>To-Do List</h1></header>
+            <header><h1>To-Do List</h1>
+                <img src="https://25.media.tumblr.com/b832028c117cb548614cbea10f0153dc/tumblr_mudg73OFlK1rgpyeqo1_500.gif" alt="kitty.gif" height="60px">
+            </header>
             <div class="user-input">
                 <label for="task" class="greet"><h5>What's on your ToDo list today ?</h5></label>
                 <input type="text" name="task" id="task" class="task-input" placeholder="Enter a task">
-                <input type="button" value="Add task" class="add-task" id="add-task">
+                <div class="outerButtons">
+                    <input type="button" value="Add task" class="add-task" id="add-task">
+                    <input type="button" value="Clear all" class="clear-all" id="clear-all">
+                </div>
             </div>
             <div class="tasks">
                 <div class="taskBox" id="taskBox">
