@@ -76,19 +76,55 @@ function addTask (task) {
 
     taskBox.appendChild(inside)
     
+    delButton.addEventListener('click', function() {
+        clickedDeleteButton (inside, taskBox)
+    })
+    editButton.addEventListener('click', function(){
+        clickedEditButton (editButton, saveButton, divMsg)
+    })
+    checkbox.addEventListener('change', function(){
+        clickedCheckBox(inside, checkbox, divMsg)
+    })
+
+    saveButton.addEventListener('click', function(){
+        clickedSaveButton(editButton, saveButton, divMsg)
+    })
+    
+    saveTasksToLocalStorage()
+}
+
+function clickedSaveButton (editButton, saveButton, divMsg){
+    isEditing = false
+    divMsg.contentEditable = false
+    divMsg.blur()
+    editButton.style.display = 'block'
+    saveButton.style.display = 'none'
+    divMsg.style.textDecoration = 'none'
+    saveTasksToLocalStorage()
+}
+
+function clickedEditButton (editButton, saveButton, divMsg){
     if (isEditing === false){
-        delButton.addEventListener('click', function() {
-            clickedDeleteButton (inside, taskBox)
-        })
-        editButton.addEventListener('click', function(){
-            clickedEditButton (editButton, saveButton, divMsg)
-        })
-        checkbox.addEventListener('change', function(){
-            clickedCheckBox(inside, checkbox, divMsg)
+        isEditing = true
+        editButton.style.display = 'none'
+        saveButton.style.display = 'block'
+        divMsg.contentEditable = true
+        divMsg.focus()
+        divMsg.style.textDecoration = 'underline'
+
+        const range = document.createRange()
+        const selection = window.getSelection()
+        range.selectNodeContents(divMsg)
+        range.collapse()
+        selection.removeAllRanges()
+        selection.addRange(range)
+
+        divMsg.addEventListener('keydown', function(event){
+            if (event.key === 'Enter'){
+                saveButton.click()
+            }
         })
     }
-
-    saveTasksToLocalStorage()
 }
 
 function clickedDeleteButton (inside, taskBox) {
@@ -114,51 +150,6 @@ function clickedCheckBox (inside, checkbox, divMsg) {
     saveTasksToLocalStorage()
 }
 
-function clickedEditButton (editButton, saveButton, divMsg){
-    if (isEditing === false){
-        function completeEdit() {
-            console.log('save')
-            divMsg.blur()
-            saveButton.style.display = 'none'
-            editButton.style.display = 'block'
-            divMsg.style.textDecoration = 'none'
-            divMsg.contentEditable = false
-            isEditing = false
-            editButton.removeEventListener('click', completeEdit)
-            saveTasksToLocalStorage()
-        }
-
-        editButton.style.display = 'none'
-        saveButton.style.display = 'block'
-        isEditing = true
-        divMsg.contentEditable = true
-        divMsg.focus()
-        divMsg.style.textDecoration = 'underline'
-
-        const range = document.createRange()
-        const selection = window.getSelection()
-        range.selectNodeContents(divMsg)
-        range.collapse()
-        selection.removeAllRanges()
-        selection.addRange(range)
-
-        saveButton.addEventListener('click', completeEdit)
-
-        divMsg.addEventListener('keydown', function(event){
-            if (event.key  === 'Enter'){
-                completeEdit()
-            }
-        })
-    }
-    else if (isEditing === false){
-        console.log('save')
-        divMsg.blur()
-        editButton.setAttribute('value', 'Edit')
-        divMsg.contentEditable = false
-    }
-    
-    saveTasksToLocalStorage()
-}
 
 function saveTasksToLocalStorage () {
     const tasks = [];
