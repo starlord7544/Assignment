@@ -1,6 +1,7 @@
 const task      = document.getElementById('task')
 const taskBox   = document.getElementById('taskBox')
 const addButton = document.getElementById('add-task')
+const clrButton = document.getElementById('clear-all')
 
 window.addEventListener('load', function(){
     const savedTasks = JSON.parse(localStorage.getItem('tasks')) || []
@@ -15,13 +16,17 @@ task.addEventListener('keyup', function (event){
     }
 })
 
-addButton.addEventListener('click', function (event){
-    event.preventDefault()
+addButton.addEventListener('click', function (){
     if (task.value != "") {
     addTask (task.value)
     console.log(task.value)
     task.value = ""
     }
+})
+
+clrButton.addEventListener('click', function() {
+    taskBox.textContent=""
+    localStorage.removeItem('tasks')
 })
 
 let isEditing = false
@@ -52,6 +57,13 @@ function addTask (task) {
     editButton.setAttribute('value','Edit')
     editButton.classList.add('edit')
 
+    const saveButton = document.createElement('input')
+    saveButton.setAttribute('type', 'button')
+    saveButton.setAttribute('value', 'Save')
+    saveButton.classList.add('save')
+    saveButton.style.display = 'none'
+
+    buttons.appendChild(saveButton)
     buttons.appendChild(editButton)
     buttons.appendChild(delButton)
 
@@ -64,70 +76,73 @@ function addTask (task) {
 
     taskBox.appendChild(inside)
     
-    if (isEditing == false){
-        delButton.addEventListener('click', clickedDeleteButton)
-        editButton.addEventListener('click', clickedEditButton)
-        checkbox.addEventListener('change', clickedCheckBox)
+    if (isEditing === false){
+        delButton.addEventListener('click', function() {
+            clickedDeleteButton (inside, taskBox)
+        })
+        editButton.addEventListener('click', function(){
+            clickedEditButton (editButton, saveButton, divMsg)
+        })
+        checkbox.addEventListener('change', function(){
+            clickedCheckBox(inside, checkbox, divMsg)
+        })
     }
 
     saveTasksToLocalStorage()
 }
 
-function clickedDeleteButton (event) {
-    const delButton = event.target
-    const inside = delButton.parentElement.parentElement
-    const taskBox = inside.parentElement
+function clickedDeleteButton (inside, taskBox) {
     taskBox.removeChild(inside)
-
-    saveTasksToLocalStorag()
+    saveTasksToLocalStorage()
 }
 
-function clickedCheckBox (event) {
-    const checkbox = event.target
-    const inside = checkbox.parentElement.parentElement
-    const divMsg = inside.querySelector('.taskMsg')
-
-    if (checkbox.checked == true){
+function clickedCheckBox (inside, checkbox, divMsg) {
+    if (checkbox.checked === true){
         inside.style.backgroundColor = 'var(--clr-checked)'
         divMsg.style.textDecoration = 'line-through'
         divMsg.style.opacity = '0.7'
+        saveTasksToLocalStorage()
     }
     else{
         inside.style.backgroundColor = 'var(--clr-input)'
         divMsg.style.textDecoration = 'none'
         divMsg.style.opacity = '1'
+        saveTasksToLocalStorage()
     }
     console.log('checkbox changed')
 
     saveTasksToLocalStorage()
 }
 
-function clickedEditButton (event){
-    event.preventDefault()
-    const editButton = event.target
-    const inside = editButton.parentElement.parentElement
-    const divMsg = inside.querySelector('.taskMsg')
-
-    if (editButton.value == 'Edit' && isEditing == false){
+function clickedEditButton (editButton, saveButton, divMsg){
+    if (isEditing === false){
         function completeEdit() {
             console.log('save')
             divMsg.blur()
-            editButton.setAttribute('value', 'Edit')
+            saveButton.style.display = 'none'
+            editButton.style.display = 'block'
             divMsg.style.textDecoration = 'none'
             divMsg.contentEditable = false
             isEditing = false
             editButton.removeEventListener('click', completeEdit)
-
             saveTasksToLocalStorage()
         }
 
+        editButton.style.display = 'none'
+        saveButton.style.display = 'block'
         isEditing = true
         divMsg.contentEditable = true
         divMsg.focus()
-        editButton.setAttribute('value', 'Save')
         divMsg.style.textDecoration = 'underline'
 
-        editButton.addEventListener('click', completeEdit)
+        const range = document.createRange()
+        const selection = window.getSelection()
+        range.selectNodeContents(divMsg)
+        range.collapse()
+        selection.removeAllRanges()
+        selection.addRange(range)
+
+        saveButton.addEventListener('click', completeEdit)
 
         divMsg.addEventListener('keydown', function(event){
             if (event.key  === 'Enter'){
@@ -135,7 +150,7 @@ function clickedEditButton (event){
             }
         })
     }
-    else if (isEditing == false){
+    else if (isEditing === false){
         console.log('save')
         divMsg.blur()
         editButton.setAttribute('value', 'Edit')
