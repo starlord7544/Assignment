@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Guess-The-Word</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <style>
         :root {
@@ -114,7 +114,7 @@
             <div class="wrongGuesses"></div>
             <div class="user-input">
                 <label for="input" class="lable">Type one letter</label>
-                <input type="text" class="input" id="input" autofocus>
+                <input type="text" class="input" id="input" maxlength="1" autofocus>
                 <input type="button" class="submit" value="Guess" id="submit">
                 <input type="button" class="reset" value="Play Again" id="reset">
             </div>
@@ -131,12 +131,45 @@
         const input = document.getElementById('input')
         const lable = document.querySelector('.lable')
         const wrongGusses = document.querySelector('.wrongGuesses')
-        const wordToGuess = "hello".toUpperCase()
+
+        const wordBank = [ "Adore", "Album", "Alias", "Alpha", "Aloha", "Amaze", "Amber", "Angel", "Apple", "Arbor",
+                        "Bacon", "Bench", "Bliss", "Brick", "Bulge", "Bingo", "Blush", "Brisk", "Candy", "Champ",
+                        "Charm", "Civet", "Cabin", "Crown", "Crane", "Drape", "Drift", "Dough", "Dodge", "Dusky",
+                        "Daisy", "Eagle", "Eager", "Elbow", "Emote", "Evoke", "Fable", "Frost", "Fjord", "Flask",
+                        "Faint", "Flute", "Fuzzy", "Forge", "Gears", "Gleam", "Ghost", "Grove", "Gypsy", "Girth",
+                        "Honey", "Happy", "Havoc", "Heart", "Hazel", "Habit", "Hatch", "Heist", "Inked", "Ivory",
+                        "Infer", "Inane", "Inlet", "Joker", "Juicy", "Jolly", "Joust", "Kazoo", "Karma", "Kitty",
+                        "Knack", "Kiosk", "Knead", "Lemon", "Lilac", "Lurch", "Laser", "Lucky", "Mirth", "Mango",
+                        "Mocha", "Maple", "Nudge", "Noble", "Nifty", "Nymph", "Niche", "Olive", "Ozone", "Onset",
+                        "Opera", "Opine", "Pique", "Piano", "Panda", "Plumb", "Puppy", "Panda", "Quail", "Quirk",
+                        "Quash", "Quest", "Quack", "Rogue", "Rainy", "River", "Radar", "Ramen", "Salad", "Savvy",
+                        "Snake", "Smile", "Space", "Storm", "Sting", "Sunny", "Swish", "Tulip", "Tiger", "Toast",
+                        "Tryst", "Tango", "Twine", "Twirl", "Unity", "Usurp", "Ulcer", "Venus", "Vogue", "Vixen",
+                        "Vivid", "Vital", "Vibes", "Wagon", "Wedge", "Whale", "Windy", "Waltz", "Water", "Xenon",
+                        "Xerox", "Xylon", "Yacht", "Yield", "Yummy", "Zealot", "Zebra", "Zippy", "Zesty", "Zappy"]
+        
+        let index = Math.floor(Math.random() * wordBank.length)
+        let wordToGuess = wordBank[index].toUpperCase()
+        console.log('Cheat Menu: The word is',wordToGuess)    // For Educational purposes
         let remaningCnt = 10
         guessCntDiv.textContent = `You have ${remaningCnt} guesses remaining`
 
 
         let wordToDisplay = Array(wordToGuess.length).fill('○')
+        word.textContent = wordToDisplay.join(' ')
+        
+        showLetters()
+        
+        function showLetters () {
+            
+            let idx1 = Math.floor(Math.random() * wordToGuess.length)
+            let idx2 = Math.floor(Math.random() * wordToGuess.length)
+            while (idx1 === idx2) {
+                idx2 = Math.floor(Math.random() * wordToGuess.length)
+            }
+            wordToDisplay[idx1] = wordToGuess[idx1]
+            wordToDisplay[idx2] = wordToGuess[idx2]
+        }
         word.textContent = wordToDisplay.join(' ')
 
         submit.addEventListener('click', function (){
@@ -150,7 +183,6 @@
     
                 if (letterFound && validInput){
                     updateDisplayedWord(guess)
-
                 }
                 else if (letterFound === false && validInput) {
                     remaningCnt--
@@ -213,13 +245,12 @@
         }
 
         input.addEventListener('keyup', function(event){
-            if (event.key === 'Enter')
+            // if (event.key === 'Enter')
             submit.click()
         })
 
         reset.addEventListener('click', function(event){
             window.location.reload()
-
         })
 
     </script>                                             
