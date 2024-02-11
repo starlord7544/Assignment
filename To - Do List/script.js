@@ -103,6 +103,7 @@ function addTask (task, isChecked) {
 
 function clickedSaveButton (editButton, saveButton, divMsg){
     isEditing = false
+    task.disabled = false
     divMsg.contentEditable = false
     divMsg.blur()
     editButton.style.display = 'block'
@@ -113,6 +114,7 @@ function clickedSaveButton (editButton, saveButton, divMsg){
 function clickedEditButton (editButton, saveButton, divMsg){
     if (isEditing === false){
         isEditing = true
+        task.disabled = true
         editButton.style.display = 'none'
         saveButton.style.display = 'block'
         divMsg.contentEditable = true
