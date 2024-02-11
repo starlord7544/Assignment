@@ -1,0 +1,158 @@
+:root {
+    --clr-border: rgba(187, 5, 5, 0.318);
+}
+*{
+    color: rgba(255, 255, 255, 0.864);
+    transition: all 0.3s ease-in-out;
+}
+body {
+    background-image: url(./particlesjs-examples.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+input {
+    /* opacity: 0.2; */
+    background-color: rgba(255, 255, 255, 0.19);
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+#hero {
+    height: 100%;
+    display: flex;
+    flex-direction: column;    
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.main {
+    width: 90vw;
+    height: 80%;
+    display: none;
+}
+.main div {
+    padding: 5px;
+}
+header {
+    text-align: center;
+    font-size: 2.5rem;
+    width: 90vw;
+    font-family: 'Monoton', sans-serif;
+    font-weight: lighter;
+}
+h1 {
+    font-weight: normal;
+}
+.startGame {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    width: 90vw;
+}
+.startButton {
+    margin-top: 50px;
+}
+.response {
+    margin: 10px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+.word {
+    margin: 10px;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.guesscnt {
+    margin: 10px;
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+.wrongGuesses {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 10px 0px 10px;
+    text-align: center;
+    height: 20px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+.user-input {
+    margin: 10px;
+    margin-top: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.input {
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+    text-align: center;
+    padding: 10px;
+    margin: 20px;
+}
+.submit {
+    padding: 10px;
+    margin: 5px;
+    font-size: 1.1rem;
+}
+.reset {
+    padding: 10px;
+    margin-bottom: 10px;
+    display: none;
+}
+.over {
+    display: none;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 10px;
+    /* font-family: 'Monoton', sans-serif;
+    font-weight: normal; */
+}
+@media screen and (max-width: 650px) {
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    header {
+        margin: 10px;
+    }
+    header, .over {
+        /* border: 1px solid rgb(208, 255, 0); */
+        font-size: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header, .over {
+        font-size: 1.5rem;
+        /* border: 1px solid rgb(34, 255, 0); */
+    }
+}
+
+@media screen and (max-width: 385px) {
+    header , .over {
+        font-size: 1.3rem;
+        /* border: 1px solid red; */
+    }
+}
+@media screen and (max-width: 300px) {
+    header , .over {
+        font-size: 1.2rem;
+    }
+    .main div {
+        padding: 3px;
+    }
+    .input {
+        margin: 10px;
+    }
+}
