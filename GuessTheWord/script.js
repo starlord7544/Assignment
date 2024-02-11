@@ -66,6 +66,7 @@
             input.value = ''
             let letterFound = false
             let validInput = false
+            let repeated = false
             if(guess.length ===1){
                 validInput = checkInput(guess)
                 letterFound = matchInput(guess)
@@ -74,11 +75,16 @@
                     updateDisplayedWord(guess)
                 }
                 else if (letterFound === false && validInput) {
-                    remaningCnt--
-                    updateNotFound(guess,remaningCnt)
+                    // remaningCnt--
+                    repeated = repeatedWrong(guess)
+                    updateNotFound(guess, repeated)
                 }
             }
         })
+
+        function repeatedWrong (guess){
+            return wrongGusses.textContent.includes(guess)
+        }
         
         function updateDisplayedWord(guess) {
             response.textContent = `Good guess! The word has letter ${guess}`
@@ -93,11 +99,16 @@
             }
         }
         
-        function updateNotFound(guess,remaningCnt) {
+        function updateNotFound(guess, repeated) {
+            remaningCnt--
+            if (repeated === false) {
+                wrongGusses.textContent += `${guess}`
+            }
             response.textContent = `Sorry, The letter ${guess} is not in the word`
             guessCntDiv.textContent = `You have ${remaningCnt} guesses remaining`
-            wrongGusses.textContent += `${guess}`
             wrongGusses.textContent = wrongGusses.textContent.split('').join(' ')
+
+
             if (remaningCnt === 0){
                 gameOver()
             }
