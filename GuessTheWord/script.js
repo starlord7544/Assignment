@@ -6,33 +6,38 @@
         const submit = document.getElementById('submit')
         const reset = document.getElementById('reset')
         const overMsg = document.querySelector('.over')
+        const winMsg = document.querySelector('.won')
         const input = document.getElementById('input')
         const lable = document.querySelector('.lable')
         const wrongGusses = document.querySelector('.wrongGuesses')
 
         const wordBank = [ "Adore", "Album", "Alias", "Alpha", "Aloha", "Amaze", "Amber", "Angel", "Apple", "Arbor",
-                        "Bacon", "Bench", "Bliss", "Brick", "Bulge", "Bingo", "Blush", "Brisk", "Candy", "Champ",
-                        "Charm", "Civet", "Cabin", "Crown", "Crane", "Drape", "Drift", "Dough", "Dodge", "Dusky",
-                        "Daisy", "Eagle", "Eager", "Elbow", "Emote", "Evoke", "Fable", "Frost", "Fjord", "Flask",
-                        "Faint", "Flute", "Fuzzy", "Forge", "Gears", "Gleam", "Ghost", "Grove", "Gypsy", "Girth",
-                        "Honey", "Happy", "Havoc", "Heart", "Hazel", "Habit", "Hatch", "Heist", "Inked", "Ivory",
-                        "Infer", "Inane", "Inlet", "Joker", "Juicy", "Jolly", "Joust", "Kazoo", "Karma", "Kitty",
-                        "Knack", "Kiosk", "Knead", "Lemon", "Lilac", "Lurch", "Laser", "Lucky", "Mirth", "Mango",
-                        "Mocha", "Maple", "Nudge", "Noble", "Nifty", "Nymph", "Niche", "Olive", "Ozone", "Onset",
-                        "Opera", "Opine", "Pique", "Piano", "Panda", "Plumb", "Puppy", "Panda", "Quail", "Quirk",
-                        "Quash", "Quest", "Quack", "Rogue", "Rainy", "River", "Radar", "Ramen", "Salad", "Savvy",
-                        "Snake", "Smile", "Space", "Storm", "Sting", "Sunny", "Swish", "Tulip", "Tiger", "Toast",
-                        "Tryst", "Tango", "Twine", "Twirl", "Unity", "Usurp", "Ulcer", "Venus", "Vogue", "Vixen",
-                        "Vivid", "Vital", "Vibes", "Wagon", "Wedge", "Whale", "Windy", "Waltz", "Water", "Xenon",
-                        "Xerox", "Xylon", "Yacht", "Yield", "Yummy", "Zealot", "Zebra", "Zippy", "Zesty", "Zappy","Quack"]
+                           "Bacon", "Bench", "Bliss", "Brick", "Bulge", "Bingo", "Blush", "Brisk", "Candy", "Champ",
+                           "Charm", "Civet", "Cabin", "Crown", "Crane", "Drape", "Drift", "Dough", "Dodge", "Dusky",
+                           "Daisy", "Eagle", "Eager", "Elbow", "Emote", "Evoke", "Fable", "Frost", "Flask", "Quack",
+                           "Faint", "Flute", "Fuzzy", "Forge", "Gears", "Gleam", "Ghost", "Grove", "Gypsy", "Girth",
+                           "Honey", "Happy", "Havoc", "Heart", "Hazel", "Habit", "Hatch", "Heist", "Inked", "Ivory",
+                           "Infer", "Inane", "Inlet", "Joker", "Juicy", "Jolly", "Joust", "Kazoo", "Karma", "Kitty",
+                           "Knack", "Kiosk", "Knead", "Lemon", "Lilac", "Lurch", "Laser", "Lucky", "Mirth", "Mango",
+                           "Mocha", "Maple", "Nudge", "Noble", "Nifty", "Nymph", "Niche", "Olive", "Ozone", "Onset",
+                           "Opera", "Opine", "Pique", "Piano", "Panda", "Plumb", "Puppy", "Panda", "Quail", "Quirk",
+                           "Quash", "Quest", "Quack", "Rogue", "Rainy", "River", "Radar", "Ramen", "Salad", "Savvy",
+                           "Snake", "Smile", "Space", "Storm", "Sting", "Sunny", "Swish", "Tulip", "Tiger", "Toast",
+                           "Tryst", "Tango", "Twine", "Twirl", "Unity", "Usurp", "Ulcer", "Venus", "Vogue", "Vixen",
+                           "Vivid", "Vital", "Vibes", "Wagon", "Wedge", "Whale", "Windy", "Waltz", "Water", "Xenon",
+                           "Xerox", "Xylon", "Yacht", "Yield", "Yummy", "Zebra", "Zippy", "Zesty", "Zappy" ]
         
         let index = Math.floor(Math.random() * wordBank.length)
         let wordToGuess = wordBank[index].toUpperCase()
-        console.log('Cheat Menu: The word is',wordToGuess)    // For Educational purposes
         let remaningCnt = 10
         guessCntDiv.textContent = `You have ${remaningCnt} guesses remaining`
-
-
+        
+        console.log('Call "cheat()" for Cheat Menu')
+        
+        function cheat() { // For Educational purposes
+            console.log('Cheat Menu:\nNikal Jaa Phali Furshat Me')    
+        }
+        
         let wordToDisplay = Array(wordToGuess.length).fill('○')
         word.textContent = wordToDisplay.join(' ')
         
@@ -121,8 +126,9 @@
         }
 
         function gameWon() {
+            winMsg.style.display = 'block'
             reset.style.display = 'block'
-            response.textContent = `Game Won! The word was ${wordToGuess}`
+            response.textContent = `Congrats! The word was ${wordToGuess}`
             input.style.display = 'none'
             submit.style.display = 'none'
             lable.style.display = 'none'
