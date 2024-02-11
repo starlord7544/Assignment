@@ -110,15 +110,16 @@ h1 {
     margin-bottom: 10px;
     display: none;
 }
-.over {
+.over, .won {
     display: none;
     font-size: 2.5rem;
     text-align: center;
     margin: 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     /* font-family: 'Monoton', sans-serif;
     font-weight: normal; */
 }
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 710px) {
     *{
         margin: 0px;
         padding: 0px;
@@ -127,19 +128,19 @@ h1 {
         margin: 10px;
     }
     header, .over {
-        /* border: 1px solid rgb(208, 255, 0); */
+        border: 1px solid rgb(208, 255, 0);
         font-size: 1.8rem;
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 425px) {
     header, .over {
         font-size: 1.5rem;
         /* border: 1px solid rgb(34, 255, 0); */
     }
 }
 
-@media screen and (max-width: 385px) {
+@media screen and (max-width: 360px) {
     header , .over {
         font-size: 1.3rem;
         /* border: 1px solid red; */
