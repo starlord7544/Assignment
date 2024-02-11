@@ -4,108 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess-The-Word</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <style>
-        :root {
-            --clr-border: rgba(187, 5, 5, 0);
-        }
-        *{
-            margin: 0px;
-            padding: 0px;
-            background-color: darkslategray;
-            color: white;
-        }
-        #hero {
-            height: 100%;
-            /* width: 100%; */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-        }
-        .main {
-            width: 90vw;
-            height: 80%;
-            border: 1px solid var(--clr-border);
-        }
-        header {
-            text-align: center;
-            font-size: 2.5rem;
-            border: 1px solid var(--clr-border);
-            margin: 10px;
-        }
-        .response {
-            margin: 10px;
-            border: 1px solid var(--clr-border);
-            text-align: center;
-        }
-        .word {
-            border: 1px solid var(--clr-border);
-            margin: 10px;
-            text-align: center;
-            font-size: 1.5rem;
-        }
-        .guesscnt {
-            margin: 10px;
-            border: 1px solid var(--clr-border);
-            text-align: center;
-        }
-        .wrongGuesses {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 10px 10px 0px 10px;
-            border: 1px solid var(--clr-border);
-            text-align: center;
-            height: 20px;
-        }
-        .user-input {
-            margin: 10px;
-            margin-top: 0px;
-            border: 1px solid var(--clr-border);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding-top: 10px;
-        }
-        .input {
-            width: 50px;
-            height: 50px;
-            font-size: 40px;
-            text-align: center;
-            padding: 10px;
-            margin: 10px;
-        }
-        .submit {
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        .reset {
-            padding: 10px;
-            margin-bottom: 10px;
-            display: none;
-        }
-        .over {
-            display: none;
-            border: 1px solid var(--clr-border);
-            text-align: center;
-            margin: 10px;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Monoton&family=Rubik+Glitch+Pop&display=swap');
     </style>
 </head>
 <body>
     <section id="hero">
+        <header>
+            <h1>
+                Guess&nbsp; . The&nbsp; . Word
+            </h1>
+            <div class="startGame">
+                <span class="material-symbols-outlined startButton" style="font-size: 5em;">play_circle</span>
+            </div>
+        </header>
         <main class="main">
-            <header>
-                <h1>
-                    Guess the Word
-                </h1>
-            </header>
             <h2 class="over">Game Over</h2>
             <div class="response" id="response">
-                Start Guessing
-                <!-- Good guess, the letter is Y -->
+                Start Guessing !
             </div>
             <div id="word" class="word">
             </div>
@@ -114,145 +32,12 @@
             <div class="wrongGuesses"></div>
             <div class="user-input">
                 <label for="input" class="lable">Type one letter</label>
-                <input type="text" class="input" id="input" maxlength="1" autofocus>
+                <input type="text" class="input" id="input" maxlength="1">
                 <input type="button" class="submit" value="Guess" id="submit">
-                <input type="button" class="reset" value="Play Again" id="reset">
+                <input type="button" class="reset" value="Go Back" id="reset">
             </div>
         </main>
     </section>
-    <!-- <script src="script.js"></script> -->
-    <script>
-        const word = document.getElementById('word')
-        const response = document.getElementById('response')
-        const guessCntDiv = document.querySelector('.guesscnt')
-        const submit = document.getElementById('submit')
-        const reset = document.getElementById('reset')
-        const overMsg = document.querySelector('.over')
-        const input = document.getElementById('input')
-        const lable = document.querySelector('.lable')
-        const wrongGusses = document.querySelector('.wrongGuesses')
-
-        const wordBank = [ "Adore", "Album", "Alias", "Alpha", "Aloha", "Amaze", "Amber", "Angel", "Apple", "Arbor",
-                        "Bacon", "Bench", "Bliss", "Brick", "Bulge", "Bingo", "Blush", "Brisk", "Candy", "Champ",
-                        "Charm", "Civet", "Cabin", "Crown", "Crane", "Drape", "Drift", "Dough", "Dodge", "Dusky",
-                        "Daisy", "Eagle", "Eager", "Elbow", "Emote", "Evoke", "Fable", "Frost", "Fjord", "Flask",
-                        "Faint", "Flute", "Fuzzy", "Forge", "Gears", "Gleam", "Ghost", "Grove", "Gypsy", "Girth",
-                        "Honey", "Happy", "Havoc", "Heart", "Hazel", "Habit", "Hatch", "Heist", "Inked", "Ivory",
-                        "Infer", "Inane", "Inlet", "Joker", "Juicy", "Jolly", "Joust", "Kazoo", "Karma", "Kitty",
-                        "Knack", "Kiosk", "Knead", "Lemon", "Lilac", "Lurch", "Laser", "Lucky", "Mirth", "Mango",
-                        "Mocha", "Maple", "Nudge", "Noble", "Nifty", "Nymph", "Niche", "Olive", "Ozone", "Onset",
-                        "Opera", "Opine", "Pique", "Piano", "Panda", "Plumb", "Puppy", "Panda", "Quail", "Quirk",
-                        "Quash", "Quest", "Quack", "Rogue", "Rainy", "River", "Radar", "Ramen", "Salad", "Savvy",
-                        "Snake", "Smile", "Space", "Storm", "Sting", "Sunny", "Swish", "Tulip", "Tiger", "Toast",
-                        "Tryst", "Tango", "Twine", "Twirl", "Unity", "Usurp", "Ulcer", "Venus", "Vogue", "Vixen",
-                        "Vivid", "Vital", "Vibes", "Wagon", "Wedge", "Whale", "Windy", "Waltz", "Water", "Xenon",
-                        "Xerox", "Xylon", "Yacht", "Yield", "Yummy", "Zealot", "Zebra", "Zippy", "Zesty", "Zappy"]
-        
-        let index = Math.floor(Math.random() * wordBank.length)
-        let wordToGuess = wordBank[index].toUpperCase()
-        console.log('Cheat Menu: The word is',wordToGuess)    // For Educational purposes
-        let remaningCnt = 10
-        guessCntDiv.textContent = `You have ${remaningCnt} guesses remaining`
-
-
-        let wordToDisplay = Array(wordToGuess.length).fill('○')
-        word.textContent = wordToDisplay.join(' ')
-        
-        showLetters()
-        
-        function showLetters () {
-            
-            let idx1 = Math.floor(Math.random() * wordToGuess.length)
-            let idx2 = Math.floor(Math.random() * wordToGuess.length)
-            while (idx1 === idx2) {
-                idx2 = Math.floor(Math.random() * wordToGuess.length)
-            }
-            wordToDisplay[idx1] = wordToGuess[idx1]
-            wordToDisplay[idx2] = wordToGuess[idx2]
-        }
-        word.textContent = wordToDisplay.join(' ')
-
-        submit.addEventListener('click', function (){
-            const guess = input.value.toUpperCase()
-            input.value = ''
-            let letterFound = false
-            let validInput = false
-            if(guess.length ===1){
-                validInput = checkInput(guess)
-                letterFound = matchInput(guess)
-    
-                if (letterFound && validInput){
-                    updateDisplayedWord(guess)
-                }
-                else if (letterFound === false && validInput) {
-                    remaningCnt--
-                    updateNotFound(guess,remaningCnt)
-                }
-            }
-        })
-        
-        function updateDisplayedWord(guess) {
-            response.textContent = `Good guess! The word has letter ${guess}`
-            for (let i=0; i<wordToGuess.length; i++){
-                if (wordToGuess[i] === guess){
-                    wordToDisplay[i] = wordToGuess[i]
-                }
-            }
-            word.textContent = wordToDisplay.join(' ')
-            if (word.textContent.replace(/\s/g,'') === wordToGuess) {
-                gameWon()
-            }
-        }
-        
-        function updateNotFound(guess,remaningCnt) {
-            response.textContent = `Sorry, The letter ${guess} is not in the word`
-            guessCntDiv.textContent = `You have ${remaningCnt} guesses remaining`
-            wrongGusses.textContent += `${guess}`
-            wrongGusses.textContent = wrongGusses.textContent.split('').join(' ')
-            if (remaningCnt === 0){
-                gameOver()
-            }
-        }
-
-        function checkInput (guess) {
-            return /^[A-Za-z]$/.test(guess)
-        }
-
-        function matchInput (guess) {
-            for (let i=0;  i<guess.length; i++){
-                if (wordToGuess.includes(guess[i])){
-                    return true
-                }
-            }
-            return false
-        }
-        
-        function gameOver() {
-            reset.style.display = 'block'
-            response.textContent = `The word was ${wordToGuess}`
-            overMsg.style.display = 'block'
-            input.style.display = 'none'
-            submit.style.display = 'none'
-            lable.style.display = 'none'
-        }
-
-        function gameWon() {
-            reset.style.display = 'block'
-            response.textContent = `Game Won! The word was ${wordToGuess}`
-            input.style.display = 'none'
-            submit.style.display = 'none'
-            lable.style.display = 'none'
-        }
-
-        input.addEventListener('keyup', function(event){
-            // if (event.key === 'Enter')
-            submit.click()
-        })
-
-        reset.addEventListener('click', function(event){
-            window.location.reload()
-        })
-
-    </script>                                             
+    <script src="script.js"></script>  
 </body>
 </html>
