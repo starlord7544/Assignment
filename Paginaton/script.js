@@ -1,11 +1,17 @@
-const buttons = document.querySelector('.buttons')
+        const buttons = document.querySelector('.buttons')
         const items   = document.querySelector('.items')
-        const itemBank = [ "Item - 1", "Item - 2", "Item - 3", "Item - 4", "Item - 5", "Item - 6", "Item - 7", "Item - 8", "Item - 9", "Item - 10", "Item - 11", "Item - 12", "Item - 13", "Item - 14", "Item - 15", "Item - 16", "Item - 17", "Item - 18", "Item - 19", "Item - 20", "Item -21", "Item - 22", "Item -23", "Item - 24" , "Item - 25", "Item - 26", "Item - 27", "Item - 28", "Item - 29", "Item - 30", "Item - 31", "Item - 32", "Item - 33", "Item - 34", "Item - 35", "Item - 36", "Item - 37", "Item - 38", "Item - 39", "Item - 40", "Item - 41", "Item - 42", "Item -43", "Item - 44" ]
+        const itemBank = [ "Item - 1", "Item - 2", "Item - 3", "Item - 4", "Item - 5", "Item - 6", "Item - 7", "Item - 8", "Item - 9", "Item - 10", "Item - 11", "Item - 12", "Item - 13", "Item - 14", "Item - 15", "Item - 16", "Item - 17", "Item - 18", "Item - 19", "Item - 20", "Item -21", "Item - 22", "Item -23", "Item - 24" , "Item - 25", "Item - 26", "Item - 27", "Item - 28", "Item - 29", "Item - 30", "Item - 31", "Item - 32", "Item - 33", "Item - 34", "Item - 35", "Item - 36", "Item - 37", "Item - 38", "Item - 39", "Item - 40", "Item - 41", "Item - 42", "Item - 43", "Item - 44" ]
         totalItemCnt = itemBank.length
         itemPerPage  = 2
         totalPages = Math.ceil(totalItemCnt/itemPerPage)
         let currentPage = 1
         const tempItemHolder = document.createElement('ul')
+
+        const jumpToFirst = document.createElement('li')
+        const jumpToLast = document.createElement('li')
+        const nextButton = document.createElement('li')
+        const prevButton = document.createElement('li')
+
         
         
         createButtons()
@@ -14,8 +20,9 @@ const buttons = document.querySelector('.buttons')
         createTempItems()
         const allItems   = tempItemHolder.querySelectorAll('li')
         
-        createNavButtons()
         allButtons[0].click()
+
+        createNavButtons()
         
         function createButtons () {
             for(let i=1; i<=totalPages; i++){
@@ -23,28 +30,45 @@ const buttons = document.querySelector('.buttons')
                 buttons.appendChild(tempButton)
                 tempButton.addEventListener('click' , function() {
                     currentPage = i
-                    if (tempButton.textContent === '...'){
+                    if (tempButton.textContent === '...')
                         return
-                    }
+                    showNav(currentPage)
                     addCurrentPageStyle(currentPage)
                     appendItems(currentPage)
                     showButtons(allButtons)
                 })
             }
         }    
+
+        function showNav(currentPage) {
+            if (currentPage === 1) {
+                jumpToFirst.classList.add('hidden')
+                prevButton.classList.add('hidden')
+            }
+            else {
+                jumpToFirst.classList.remove('hidden')
+                prevButton.classList.remove('hidden')
+            }
+            
+            if (currentPage === totalPages){
+                jumpToLast.classList.add('hidden')
+                nextButton.classList.add('hidden')
+            }
+            else {
+                jumpToLast.classList.remove('hidden')
+                nextButton.classList.remove('hidden')
+            }
+        }
         
         
         function createNavButtons () {
-            const jumpToLast = document.createElement('li')
             jumpToLast.textContent = '>>'
-            const jumpToFirst = document.createElement('li')
             jumpToFirst.textContent = '<<'
-
-
-            const prevButton = document.createElement('li')
             prevButton.textContent  = '<'
-            const nextButton = document.createElement('li')
             nextButton.textContent = '>'
+
+            jumpToFirst.classList.add('hidden')
+            prevButton.classList.add('hidden')
 
             const firstChild = buttons.firstChild
 
