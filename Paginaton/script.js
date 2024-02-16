@@ -1,4 +1,4 @@
-        const buttons = document.querySelector('.buttons')
+const buttons = document.querySelector('.buttons')
         const items   = document.querySelector('.items')
         const itemBank = [ "Item - 1", "Item - 2", "Item - 3", "Item - 4", "Item - 5", "Item - 6", "Item - 7", "Item - 8", "Item - 9", "Item - 10", "Item - 11", "Item - 12", "Item - 13", "Item - 14", "Item - 15", "Item - 16", "Item - 17", "Item - 18", "Item - 19", "Item - 20", "Item -21", "Item - 22", "Item -23", "Item - 24" , "Item - 25", "Item - 26", "Item - 27", "Item - 28", "Item - 29", "Item - 30", "Item - 31", "Item - 32", "Item - 33", "Item - 34", "Item - 35", "Item - 36", "Item - 37", "Item - 38", "Item - 39", "Item - 40", "Item - 41", "Item - 42", "Item -43", "Item - 44" ]
         totalItemCnt = itemBank.length
@@ -14,6 +14,7 @@
         createTempItems()
         const allItems   = tempItemHolder.querySelectorAll('li')
         
+        createNavButtons()
         allButtons[0].click()
         
         function createButtons () {
@@ -22,13 +23,53 @@
                 buttons.appendChild(tempButton)
                 tempButton.addEventListener('click' , function() {
                     currentPage = i
+                    if (tempButton.textContent === '...'){
+                        return
+                    }
                     addCurrentPageStyle(currentPage)
                     appendItems(currentPage)
                     showButtons(allButtons)
                 })
             }
-        }        
+        }    
         
+        
+        function createNavButtons () {
+            const jumpToLast = document.createElement('li')
+            jumpToLast.textContent = '>>'
+            const jumpToFirst = document.createElement('li')
+            jumpToFirst.textContent = '<<'
+
+
+            const prevButton = document.createElement('li')
+            prevButton.textContent  = '<'
+            const nextButton = document.createElement('li')
+            nextButton.textContent = '>'
+
+            const firstChild = buttons.firstChild
+
+            buttons.insertBefore(jumpToFirst , firstChild)
+            buttons.insertBefore(prevButton,firstChild)
+            buttons.appendChild(nextButton)
+            buttons.appendChild(jumpToLast)
+
+
+            jumpToFirst.addEventListener ('click' , function() {
+                allButtons[0].click()
+            })
+            jumpToLast.addEventListener ('click' , function () {
+                allButtons[totalPages-1].click()
+            })
+
+            prevButton.addEventListener('click', function() {
+                allButtons[currentPage-2].click()
+            })
+
+            nextButton.addEventListener('click', function () {
+                allButtons[currentPage].click()
+            })
+        }
+
         function createTempItems () {
             itemBank.forEach((item,i) => {
                 const tempItem = document.createElement('li')
