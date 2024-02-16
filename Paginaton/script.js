@@ -12,8 +12,6 @@ const jumpToLast = document.createElement('li')
 const nextButton = document.createElement('li')
 const prevButton = document.createElement('li')
 
-
-
 createButtons()
 const allButtons = Array.from(document.querySelectorAll('.buttons li'))
 
@@ -106,11 +104,9 @@ function appendItems (pageNo) {
     items.innerHTML =''
     const start = (pageNo - 1) * itemPerPage
     const end = start + itemPerPage
-    
-    allItems.forEach((Element,i) => {
-            if (i>= start && i<end)
-            items.appendChild(allItems[i])
-    })
+
+    const displayItems = allItems.slice(start,end)
+    items.append(...displayItems)
 }
 
 function addCurrentPageStyle (currentPage) {
@@ -126,7 +122,6 @@ function showButtons(allButtons) {
 
     allButtons.forEach((Element,i) => {
         Element.textContent = i+1
-
         if ( i<2 || i>totalPages-3)
             Element.classList.remove('hidden')
 
