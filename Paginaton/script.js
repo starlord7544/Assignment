@@ -1,3 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section id="hero">
+        <main class="main">
+            <ul class="items">
+            </ul>
+        </main>
+        <ul class="buttons">
+        </ul>
+    </section>
+    <!-- <script src="script.js"></script> -->
+    <script>
         const buttons = document.querySelector('.buttons')
         const items   = document.querySelector('.items')
         const itemBank = [ "Item - 1", "Item - 2", "Item - 3", "Item - 4", "Item - 5", "Item - 6", "Item - 7", "Item - 8", "Item - 9", "Item - 10", "Item - 11", "Item - 12", "Item - 13", "Item - 14", "Item - 15", "Item - 16", "Item - 17", "Item - 18", "Item - 19", "Item - 20", "Item -21", "Item - 22", "Item -23", "Item - 24" , "Item - 25", "Item - 26", "Item - 27", "Item - 28", "Item - 29", "Item - 30", "Item - 31", "Item - 32", "Item - 33", "Item - 34", "Item - 35", "Item - 36", "Item - 37", "Item - 38", "Item - 39", "Item - 40", "Item - 41", "Item - 42", "Item - 43", "Item - 44" ]
@@ -18,7 +37,7 @@
         const allButtons = Array.from(document.querySelectorAll('.buttons li'))
         
         createTempItems()
-        const allItems   = tempItemHolder.querySelectorAll('li')
+        const allItems   = Array.from(tempItemHolder.querySelectorAll('li'))
         
         allButtons[0].click()
 
@@ -141,3 +160,7 @@
                     allButtons[i-2].textContent = '...'
             })
         }
+
+    </script>
+</body>
+</html>
