@@ -3,8 +3,7 @@ const player = document.querySelector('.indicator')
 const reset  = document.querySelector('.reset')
 const start = document.querySelector('.start')
 createDiv()
-const allBoxes = Array.from(document.querySelectorAll('.boxes'))
-// console.log(allBoxes)
+let allBoxes = Array.from(document.querySelectorAll('.boxes'))
 
 let turn = true;
 let cnt = 0;
@@ -40,7 +39,6 @@ function updateDisplay (turn, tempDiv) {
         player.textContent = `Player 1's move`
     }
     cnt++;
-    console.log(cnt)
 }
 
 function check_win () {
@@ -85,7 +83,7 @@ function updateWin(Plyr , i1 , i2 , i3) {
             winner = 1
         else
             winner = 2
-        player.textContent = `Player ${winner} WON`
+        player.textContent = `Player ${winner} won the game`
         allBoxes[i1].style.backgroundColor = 'rgba(255, 255, 255, 0.7)'
         allBoxes[i2].style.backgroundColor = 'rgba(255, 255, 255, 0.7)'
         allBoxes[i3].style.backgroundColor = 'rgba(255, 255, 255, 0.7)'
@@ -101,16 +99,20 @@ function clearBoxes () {
 }
 
 reset.addEventListener('click', function () {
-    // reset.style.display = 'none'
-    // cnt = 0
-    // board.textContent = "";
-    // board.style.pointerEvents = 'all'
-    // board.style.opacity = '1'
-    // createDiv()
-    // clearBoxes()
-    // allBoxes = Array.from(document.querySelectorAll('.boxes'))
-    start.click()
-    window.location.reload()
+    reset.style.display = 'none'
+    cnt = 0
+    board.textContent = "";
+    board.style.pointerEvents = 'all'
+    board.style.opacity = '1'
+    if (turn)
+    player.textContent = `Player 1's move`
+    else
+    player.textContent = `Player 2's move`
+    createDiv()
+    clearBoxes()
+    allBoxes = Array.from(document.querySelectorAll('.boxes'))
+    // start.click()
+    // window.location.reload()
 
 })
 start.addEventListener('click' , function () {
