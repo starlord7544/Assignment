@@ -8,9 +8,9 @@ let allBoxes = Array.from(document.querySelectorAll('.boxes'))
 let turn = true;
 let cnt = 0;
 if (turn)
-player.textContent = `Player 1's move`
+player.textContent = `Player 1's move ( X )`
 else
-player.textContent = `Player 2's move`
+player.textContent = `Player 2's move ( O )`
 
 
 function createDiv () {
@@ -32,11 +32,11 @@ function createDiv () {
 function updateDisplay (turn, tempDiv) {
     if (turn === true) {
         tempDiv.textContent = 'X';
-        player.textContent = `Player 2's move`
+        player.textContent = `Player 2's move ( O )`
     }
     else{
         tempDiv.textContent = 'O'
-        player.textContent = `Player 1's move`
+        player.textContent = `Player 1's move ( X )`
     }
     cnt++;
 }
@@ -105,19 +105,17 @@ reset.addEventListener('click', function () {
     board.style.pointerEvents = 'all'
     board.style.opacity = '1'
     if (turn)
-    player.textContent = `Player 1's move`
+    player.textContent = `Player 1's move ( X )`
     else
-    player.textContent = `Player 2's move`
+    player.textContent = `Player 2's move ( O )`
     createDiv()
     clearBoxes()
     allBoxes = Array.from(document.querySelectorAll('.boxes'))
-    // start.click()
-    // window.location.reload()
-
 })
 start.addEventListener('click' , function () {
     start.style.display = 'none'
     board.style.display = 'flex'
     player.style.display = 'block'
+    reset.style.display = 'flex'
 })
 
