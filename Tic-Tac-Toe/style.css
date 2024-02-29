@@ -9,7 +9,7 @@ body {
     background-attachment: fixed;
     background-size: cover;
     /* background-color: rgb(28, 47, 47); */
-    background-image: url(/particlesjs-examples.gif);
+    background-image: url(./particlesjs-examples.gif);
 }
 #hero {
     height: 100%;
