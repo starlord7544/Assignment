@@ -1,15 +1,12 @@
 * {
     transition: all 0.4s ease-in-out;
+    color: white;
 }
 body {
-    background-color: darkslategrey;
-    user-select: none;
-    color: white;
+    background-image: url(./particlesjs-examples.gif);
+    background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
-    /* background-color: rgb(28, 47, 47); */
-    background-image: url(./particlesjs-examples.gif);
 }
 #hero {
     height: 100%;
@@ -18,14 +15,14 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    /* position: relative; */
 }
 header {
-    /* padding: 5%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 1.8rem;
-    /* border: 1px solid rgb(123, 10, 10); */
     text-align: center;
-    /* font-size: 2.5rem; */
+    height: 100px;
     width: 90vw;
     font-family: 'Monoton', sans-serif
 }
@@ -45,7 +42,6 @@ h1 {
     width: 32%;
     height: 32%;
     border: 2px solid rgba(255, 255, 255, 0.571);
-    /* border-radius: 10px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,7 +50,6 @@ h1 {
     font-size: 1.5em;
 }
 .boxes:hover {
-    /* box-shadow: 0px 0px 5px; */
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
 }
@@ -70,16 +65,6 @@ h1 {
 .box3 ,.box6 ,.box9 {
     border-right: none;
 }
-.marked {
-    background-color: rgba(255, 0, 0, 0.192);
-}
-/* .win {
-    position: absolute;
-    top: 30%;
-}
-.winMsg {
-    display: none;
-} */
 .indicator {
     display: none;
 }
@@ -91,20 +76,13 @@ h1 {
     font-size: 2rem;
     margin-top: 10%;
     opacity: 0.9;
-    /* width: 90vw;
-    height: 90vw; */
-    /* display: none; */
 }
 .start:hover {
     box-shadow: 0px 0px 25px 5px;
     transform:rotate(360deg)
 }
 .reset {
-    /* position: absolute;
-    bottom: 15%; */
-    /* border: 1px solid red; */
     width: auto;
-    /* margin-top: 3%; */
     display: none;
     justify-content: center;
     align-items: center;
@@ -112,36 +90,29 @@ h1 {
 .resetBtn {
     height: 55px;
     width: 90px;
-    margin-bottom: 15%;
     border: none;
     color: white;
     border-radius: 13px;
-    /* padding: 10px 15px; */
     background-color: rgba(255, 255, 255, 0.2);
 }
-@media screen and ( min-width:850px ) {
+@media screen and ( min-width:601px ) {
     .board {
-        width: 420px;
-        height: 420px;
-    }
-    .reset{
-        margin-top: 0px;
-    }
-    .resetBtn {
-        border-radius: 10px;
-        padding: 3% 5%;
+        width: 400px;
+        height: 400px;
     }
 }
-@media screen and (max-width:550px) {
+@media screen and (max-width:600px) {
     .board {
-        /* border: 1px solid red; */
+        margin-bottom: 10px;
         width: 70vw;
         height: 70vw;
     }
 }
 @media screen and (max-width:350px) {
+    header {
+        font-size: 1.5rem;
+    }
     .board {
-        /* border: 1px solid forestgreen; */
         width: 85vw;
         height: 85vw;
     }
