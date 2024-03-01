@@ -106,6 +106,7 @@ reset.addEventListener('click', function () {
     board.textContent = ""
     board.style.pointerEvents = 'all'
     board.style.opacity = '1'
+    kitty.style.opacity = '0'
     if (turn)
     player.textContent = `Player 1's move ( X )`
     else
@@ -116,7 +117,6 @@ reset.addEventListener('click', function () {
 })
 start.addEventListener('click' , function () {
     header.classList.remove('head')
-    kitty.style.opacity = '0'
     start.style.display = 'none'
     board.style.display = 'flex'
     player.style.display = 'block'
