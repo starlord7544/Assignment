@@ -92,6 +92,7 @@ function updateWin(Plyr , i1 , i2 , i3) {
         allBoxes[i1].style.borderRadius = '10px'
         allBoxes[i2].style.borderRadius = '10px'
         allBoxes[i3].style.borderRadius = '10px'
+        kitty.style.opacity = '1'
     }
 }
 function clearBoxes () {
@@ -115,9 +116,10 @@ reset.addEventListener('click', function () {
 })
 start.addEventListener('click' , function () {
     header.classList.remove('head')
+    kitty.style.opacity = '0'
     start.style.display = 'none'
-    kitty.style.opacity = '1'
     board.style.display = 'flex'
     player.style.display = 'block'
     reset.style.display = 'flex'
 })
+
