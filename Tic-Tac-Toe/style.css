@@ -1,6 +1,7 @@
 * {
     transition: all 0.4s ease-in-out;
     color: white;
+    user-select: none;
 }
 body {
     background-image: url(./particlesjs-examples.gif);
@@ -33,6 +34,20 @@ h1 {
     margin: 40px;
     font-size: 2.5rem;
 }
+.kitty {
+    display: flex;
+    justify-content: flex-end;
+    width: 50vw;
+    position: absolute;
+    top: 20%;
+    opacity: 0;
+    transition: all 1s ease-in-out;
+}
+#kitto {
+    padding-left: 10px;
+    padding-top: 10px;
+    width: 50px;
+}
 .board {
     width: 50vw;
     height: 50vw;
@@ -49,7 +64,6 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    user-select: none;
     transition: all 0.2s ease-in-out;
     font-size: 1.5em;
 }
@@ -104,12 +118,18 @@ h1 {
         width: 400px;
         height: 400px;
     }
+    .kitty {
+        width: 400px;
+    }
 }
 @media screen and (max-width:600px) {
     .board {
         margin-bottom: 10px;
         width: 70vw;
         height: 70vw;
+    }
+    .kitty {
+        width: 70vw;
     }
 }
 @media screen and (max-width:350px) {
@@ -119,6 +139,9 @@ h1 {
     .board {
         width: 85vw;
         height: 85vw;
+    }
+    .kitty {
+        width: 85vw;
     }
     .boxes {
         width: 31%;
