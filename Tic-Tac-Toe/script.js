@@ -99,7 +99,7 @@ function clearBoxes () {
 }
 
 reset.addEventListener('click', function () {
-    reset.style.display = 'none'
+    // reset.style.display = 'none'
     cnt = 0
     board.textContent = "";
     board.style.pointerEvents = 'all'
