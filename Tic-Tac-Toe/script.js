@@ -3,6 +3,7 @@ const player = document.querySelector('.indicator')
 const reset  = document.querySelector('.reset')
 const start = document.querySelector('.start')
 const header = document.getElementById('title')
+const kitty = document.querySelector('.kitty')
 createDiv()
 let allBoxes = Array.from(document.querySelectorAll('.boxes'))
 
@@ -115,8 +116,8 @@ reset.addEventListener('click', function () {
 start.addEventListener('click' , function () {
     header.classList.remove('head')
     start.style.display = 'none'
+    kitty.style.opacity = '1'
     board.style.display = 'flex'
     player.style.display = 'block'
     reset.style.display = 'flex'
 })
-
