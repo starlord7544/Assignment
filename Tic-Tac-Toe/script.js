@@ -2,10 +2,11 @@ const board = document.getElementById('board')
 const player = document.querySelector('.indicator')
 const reset  = document.querySelector('.reset')
 const start = document.querySelector('.start')
+const header = document.getElementById('title')
 createDiv()
 let allBoxes = Array.from(document.querySelectorAll('.boxes'))
 
-let turn = true;
+let turn = true
 let cnt = 0;
 if (turn)
 player.textContent = `Player 1's move ( X )`
@@ -76,7 +77,7 @@ function updateWin(Plyr , i1 , i2 , i3) {
     board.style.pointerEvents = 'none'
     reset.style.display = 'flex'
     if (Plyr === -1)
-    player.textContent = `Draw  :( Boring`
+    player.innerHTML = 'Draw &nbsp :( &nbsp Boring'
     else{
         let winner;
         if (Plyr === 'X')
@@ -93,15 +94,14 @@ function updateWin(Plyr , i1 , i2 , i3) {
     }
 }
 function clearBoxes () {
-    for (let i=0; i<9; i++) {
-        allBoxes[i].textContent = ""
-    }
+    allBoxes.forEach(box => {
+        box.textContent = ""
+    })
 }
 
 reset.addEventListener('click', function () {
-    // reset.style.display = 'none'
     cnt = 0
-    board.textContent = "";
+    board.textContent = ""
     board.style.pointerEvents = 'all'
     board.style.opacity = '1'
     if (turn)
@@ -113,6 +113,7 @@ reset.addEventListener('click', function () {
     allBoxes = Array.from(document.querySelectorAll('.boxes'))
 })
 start.addEventListener('click' , function () {
+    header.classList.remove('head')
     start.style.display = 'none'
     board.style.display = 'flex'
     player.style.display = 'block'
