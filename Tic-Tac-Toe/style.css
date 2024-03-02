@@ -36,14 +36,15 @@ h1 {
 }
 .kitty {
     display: flex;
-    justify-content: flex-end;
-    width: 50vw;
+    justify-content: flex-start;
+    width: 120px;
     position: absolute;
-    top: 130px;
+    top: 90px;
     opacity: 0;
     transition: all 0.6s ease-in-out;
     pointer-events: none;
     z-index: -1;
+    rotate: -12.5deg;
 }
 #kitto {
     padding-left: 10px;
@@ -120,18 +121,12 @@ h1 {
         width: 400px;
         height: 400px;
     }
-    .kitty {
-        width: 400px;
-    }
 }
 @media screen and (max-width:600px) {
     .board {
         margin-bottom: 10px;
         width: 70vw;
         height: 70vw;
-    }
-    .kitty {
-        width: 70vw;
     }
 }
 @media screen and (max-width:350px) {
@@ -141,9 +136,6 @@ h1 {
     .board {
         width: 85vw;
         height: 85vw;
-    }
-    .kitty {
-        width: 85vw;
     }
     .boxes {
         width: 31%;
