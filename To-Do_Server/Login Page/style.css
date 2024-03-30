@@ -1,0 +1,80 @@
+:root {
+    --clr-foreground: #FFF3F3;
+    --clr-background: #ffd8c9;
+    --clr-accent: rgb(255, 170, 124);
+    --clr-input: #ffffff;
+    --clr-checked: #c3c3c376;
+    --clr-checkbox: rgba(255, 170, 124, 0.3);
+    --clr-button: #e6e6e67c;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: var(--clr-background);
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+    text-align: center;
+    justify-self: flex-end;
+    width: 105%;
+}
+
+#login , #signup {
+    /* border: 1px solid; */
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    padding: 5px;
+    width: 350px;
+    min-width: 260px;
+    padding: 15px 40px 30px 20px;
+    box-shadow: 0 0 10px  rgba(0, 0, 0, 0.3);
+    background-color: var(--clr-foreground);
+}
+#username , #pass{
+    width: 100%;
+    padding: 15px 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px  rgba(0, 0, 0, 0.3);
+}
+input , button {
+    border-radius: 10px;
+    border: none;
+    /* background-color: lightgray; */
+    background-color: var(--clr-input);
+}
+.submit {
+    width: 70px;
+    height: 40px;
+    background-color: var(--clr-accent);
+}
+#main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+}
+.container {
+    display: flex;
+    width: 105%;
+    justify-content: space-between;
+}
+#error-msg {
+    display: none;
+    color: red;
+}
+.switchPage{
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    align-items: center;
+}
+.redirect {
+    width: 105%;
+    display: flex;
+    justify-content: center;
+    text-align: justify;
+    display: none;
+}
