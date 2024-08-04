@@ -1,152 +1,80 @@
-* {
-    transition: all 0.4s ease-in-out;
-    color: white;
-    user-select: none;
-}
-body {
-    background-image: url(./particlesjs-examples.gif);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-#hero {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    text-align: center;
-    height: 100px;
-    width: 90vw;
-    font-family: 'Monoton', sans-serif
-}
-h1 {
-    font-weight: lighter;
-}
-.head {
-    margin: 40px;
-    font-size: 2.5rem;
-}
-.kitty {
-    display: flex;
-    justify-content: flex-start;
-    width: 120px;
-    position: absolute;
-    top: 90px;
-    opacity: 0;
-    transition: all 0.6s ease-in-out;
-    pointer-events: none;
-    z-index: -1;
-    rotate: -12.5deg;
-}
-#kitto {
-    padding-left: 10px;
-    padding-top: 10px;
-    width: 50px;
-}
-.board {
-    width: 50vw;
-    height: 50vw;
-    display: none;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    padding: 1%;
-}
-.boxes {
-    width: 32%;
-    height: 32%;
-    border: 2px solid rgba(255, 255, 255, 0.571);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease-in-out;
-    font-family: cursive;
-    font-size: 1.5em;
-    cursor: pointer;
-}
-.boxes:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-}
-.box1 ,.box2 ,.box3 {
-    border-top: none;
-}
-.box7 ,.box8 ,.box9 {
-    border-bottom: none;
-}
-.box1 ,.box4 ,.box7 {
-    border-left: none;
-}
-.box3 ,.box6 ,.box9 {
-    border-right: none;
-}
-.indicator {
-    display: none;
-}
-.start {
-    border-radius: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    margin-top: 10%;
-    opacity: 0.9;
-    cursor: pointer;
-}
-.start:hover {
-    box-shadow: 0px 0px 25px 5px;
-    transform:rotate(360deg)
-}
-.reset {
-    width: auto;
-    display: none;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
-.resetBtn {
-    height: 55px;
-    width: 90px;
-    border: none;
-    color: white;
-    border-radius: 13px;
-    background-color: rgba(255, 255, 255, 0.2);
-}
-@media screen and ( min-width:601px ) {
-    .board {
-        width: 400px;
-        height: 400px;
+    * {
+        transition: all 0.4s ease-in-out;
+        color: white;
+        user-select: none;
     }
-}
-@media screen and (max-width:600px) {
-    .board {
-        margin-bottom: 10px;
-        width: 70vw;
-        height: 70vw;
+    body {
+        background-image: url(./particlesjs-examples.gif);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
     }
-}
-@media screen and (max-width:350px) {
-    #title {
-        font-size: 1.5rem;
+    #hero {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        text-align: center;
+        height: 100px;
+        width: 90vw;
+        font-family: 'Monoton', sans-serif
+    }
+    h1 {
+        font-weight: lighter;
+    }
+    .head {
+        margin: 40px;
+        font-size: 2.5rem;
+    }
+    .kitty {
+        display: flex;
+        justify-content: flex-start;
+        width: 120px;
+        position: absolute;
+        top: 90px;
+        opacity: 0;
+        transition: all 0.6s ease-in-out;
+        pointer-events: none;
+        z-index: -1;
+        rotate: -12.5deg;
+    }
+    #kitto {
+        padding-left: 10px;
+        padding-top: 10px;
+        width: 50px;
     }
     .board {
-        width: 85vw;
-        height: 85vw;
+        width: 50vw;
+        height: 50vw;
+        display: none;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+        padding: 1%;
     }
     .boxes {
-        width: 31%;
-        height: 31%;
+        width: 32%;
+        height: 32%;
+        border: 2px solid rgba(255, 255, 255, 0.571);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease-in-out;
+        font-family: cursive;
+        font-size: 3em;
+        cursor: pointer;
     }
-    .boxes {
-        border: 1px solid rgba(255, 255, 255, 0.8);
+    .boxes:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
     }
     .box1 ,.box2 ,.box3 {
         border-top: none;
@@ -160,4 +88,77 @@ h1 {
     .box3 ,.box6 ,.box9 {
         border-right: none;
     }
-}
+    .indicator {
+        display: none;
+    }
+    .start {
+        border-radius: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin-top: 10%;
+        opacity: 0.9;
+        cursor: pointer;
+    }
+    .start:hover {
+        box-shadow: 0px 0px 25px 5px;
+        transform:rotate(360deg)
+    }
+    .reset {
+        width: auto;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    .resetBtn {
+        height: 55px;
+        width: 90px;
+        border: none;
+        color: white;
+        border-radius: 13px;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    @media screen and ( min-width:601px ) {
+        .board {
+            width: 400px;
+            height: 400px;
+        }
+    }
+    @media screen and (max-width:600px) {
+        .board {
+            margin-bottom: 10px;
+            width: 70vw;
+            height: 70vw;
+        }
+    }
+    @media screen and (max-width:350px) {
+        #title {
+            font-size: 1.5rem;
+        }
+        .board {
+            width: 85vw;
+            height: 85vw;
+        }
+        .boxes {
+            width: 31%;
+            height: 31%;
+        }
+        .boxes {
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            font-size: 2em;
+        }
+        .box1 ,.box2 ,.box3 {
+            border-top: none;
+        }
+        .box7 ,.box8 ,.box9 {
+            border-bottom: none;
+        }
+        .box1 ,.box4 ,.box7 {
+            border-left: none;
+        }
+        .box3 ,.box6 ,.box9 {
+            border-right: none;
+        }
+    }
