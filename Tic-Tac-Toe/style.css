@@ -39,8 +39,7 @@ h1 {
     justify-content: flex-start;
     width: 120px;
     position: absolute;
-    margin-left: 280px;
-    top: 105px;
+    top: 90px;
     opacity: 0;
     transition: all 0.6s ease-in-out;
     pointer-events: none;
@@ -69,9 +68,9 @@ h1 {
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease-in-out;
-    font-size: 5em;
-    font-family: 'Courier New', Courier, monospace;
     font-family: cursive;
+    font-size: 1.5em;
+    cursor: pointer;
 }
 .boxes:hover {
     background-color: rgba(255, 255, 255, 0.1);
@@ -100,6 +99,7 @@ h1 {
     font-size: 2rem;
     margin-top: 10%;
     opacity: 0.9;
+    cursor: pointer;
 }
 .start:hover {
     box-shadow: 0px 0px 25px 5px;
@@ -110,6 +110,7 @@ h1 {
     display: none;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 .resetBtn {
     height: 55px;
@@ -146,7 +147,6 @@ h1 {
     }
     .boxes {
         border: 1px solid rgba(255, 255, 255, 0.8);
-        font-size: 20vw;
     }
     .box1 ,.box2 ,.box3 {
         border-top: none;
