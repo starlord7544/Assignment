@@ -4,7 +4,7 @@ body {
 }
 
 #header {
-  border: 1px solid;
+  /* border: 1px solid; */
   border-radius: 10px;
   text-align: center;
 }
@@ -23,7 +23,7 @@ body {
 }
 
 #input-container {
-  border: 1px solid white;
+  /* border: 1px solid white; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -34,16 +34,24 @@ body {
 }
 
 #input-box {
+  margin-top: 10px;
   border-radius: 5px;
   /* width: 50%; */
 }
 
 #btn-container {
-  border: 1px solid white;
+  margin-top: 10px;
+  /* border: 1px solid white; */
   display: flex;
   justify-content: space-between;
   width: 90%;
 }
+
 .btn {
-  padding: 5px;
+  padding: 10px;
+  background-color: gray;
+  /* width: 100px;
+  height: 40px; */
+  border-radius: 5px;
+  /* color: rgba(0, 0, 0, 0.488); */
 }
