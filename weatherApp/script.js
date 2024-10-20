@@ -1,12 +1,7 @@
 const API_KEY = "98ec8000f11d447ea18192316241910"
 
-// function showWeather(data) {
-//     const temp = data.current.temp_c
-    
-// }
-
 function getWeather(searchVal) {
-    fetch(`http://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${searchVal}`)
+    fetch(`https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&q=${searchVal}`)
     .then((res) => res.json())
     .then((data) => {
         weatherData = data
@@ -38,11 +33,6 @@ const humidityIcon = document.querySelector(".humidity-icon")
 const humidityVal = document.querySelector(".humidity-value")
 const windVal = document.querySelector(".wind-value")
 
-console.log(humidity)
-console.log(humidityIcon)
-console.log(humidityVal)
-
-
 searchBtn.addEventListener("click", (e) => {
     console.log("clicked")
     searchVal = searchInput.value.trim()
@@ -73,7 +63,5 @@ const setLocation = (location) => {
 const setHumidity = (humidity) => {
     humidityVal.textContent = `${humidity} % Humidity`
 }
-
-console.log(weatherData.current.humidity)
 
 
