@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taja - Khabar</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="branding">Taja - Kharab</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search Bar" id="search">
+                <div class="search-logo">
+                    <img src="./search.png" alt="search icon">
+                </div>
+            </div>
+
+            <details class="filters">
+                <summary>Filters</summary>
+                <div class="filter-content">
+                    <label for="language">Language:</label>
+                    <select id="language">
+                        <option value="en" selected>English</option>
+                        <option value="ar">Arabic</option>
+                        <option value="de">German</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="he">Hebrew</option>
+                        <option value="it">Italian</option>
+                        <option value="nl">Dutch</option>
+                        <option value="no">Norwegian</option>
+                        <option value="pt">Portuguese</option>
+                        <option value="ru">Russian</option>
+                        <option value="sv">Swedish</option>
+                        <option value="ud">Urdu</option>
+                        <option value="zh">Chinese</option>
+                    </select>
+
+                    <label for="sort">Sort by:</label>
+                    <select id="sort">
+                        <option value="publishedAt" selected>Published Date</option>
+                        <option value="relevancy">Relevancy</option>
+                        <option value="popularity">Popularity</option>
+                    </select>
+
+                    <label for="search-in">Search in:</label>
+                    <select id="search-in">
+                        <option value="all" selected>All</option>
+                        <option value="title">Title</option>
+                        <option value="description">Description</option>
+                        <option value="content">Content</option>
+                    </select>
+                </div>
+            </details>
+
+        </header>
+
+        <main class="content">
+        </main>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
