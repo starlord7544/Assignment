@@ -22,6 +22,7 @@ const setInfo = (weatherData) => {
 let searchVal = "dehradun"
 let weatherData = {}
 
+getWeather(searchVal)
 
 const searchInput = document.getElementById("search-input")
 const searchBtn = document.getElementById("search-btn")
