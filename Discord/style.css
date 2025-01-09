@@ -1,0 +1,345 @@
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    /* background-color: rgb(24, 0, 66); */
+    background-image: url("/assets/discord-background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid white; */
+    gap: 100px;
+    width: 100%;
+    height: 70px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.open-btn {
+    padding: 10px;
+    border-radius: 50px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 750px;
+    /* border: 1px solid white;  */
+    color: white;
+    text-decoration: none;
+}
+
+nav .nav-logo {
+    color: white;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    /* border: 1px solid white; */
+    position: relative;
+    height: 640px;
+}
+
+
+.hero .details {
+    /* border: 1px solid white; */
+    width: 400px;
+    height: 500px;
+    position: absolute;
+    top: 100px;
+    left: 120px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: visible;
+}
+
+.hero h1 {
+    font-size: 55px;
+    font-weight: 800;
+    line-height: 120%;
+    font-family: sans-serif;
+    width: 450px;
+    margin-top: 32px;
+}
+
+.hero p {
+    font-size: 22px;
+    font-weight: 400;
+    font-family: Ggsans, sans-serif;
+    width: 448px;
+    height: 124px;
+    line-height: 1.5;
+    padding-right: 40px;
+}
+
+.and-icon {
+    height: 40px;
+}
+
+.landing_img_container {
+    /* border: 1px solid white; */
+    position: absolute;
+    right: 50px;
+    bottom: 0px;
+}
+
+.landing_img {
+    width: 832px;
+}
+
+
+.hero-btns {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    /* border: 1px solid white; */
+    width: 700px;
+    margin-right: 10px;
+
+}
+
+.hero-btns .btns {
+    padding: 20px;
+    border-radius: 50px;
+    font-size: 20px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0px;
+}
+
+.redirect-btn {
+    background-color: #161CBB;
+    color: white;
+}
+
+.download-btn {
+    color: black;
+}
+
+.download-btn img {
+    opacity: 0.75;
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+    /* border: 1px solid black; */
+}
+
+.cards {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 3px solid rgba(255, 255, 255, 0.35);
+    width: 1300px;
+    height: 632px;
+    border-radius: 70px;
+    backdrop-filter: blur(50px);
+    background-image: linear-gradient(135deg, #fff6, #ffffff12);
+    margin: 162px 0px;
+}
+
+.card1,
+.card3,
+.card5 {
+    padding: 16px 60px 16px 16px;
+}
+
+.card2,
+.card4,
+.card6 {
+    padding: 16px 16px 16px 60px;
+}
+
+.video {
+    height: 600px;
+    width: 778px;
+    position: relative;
+}
+
+.card video {
+    object-fit: cover;
+    margin: auto;
+    z-index: -69;
+    width: 100%;
+    height: 100%;
+    background-position: 50%;
+    background-size: cover;
+    position: absolute;
+    border-radius: 50px;
+    inset: 0%;
+}
+
+.card h1 {
+    font-family: sans-serif;
+    font-size: 36px;
+    height: 130px;
+    width: 380px;
+    height: auto;
+    margin: 60px 0px 16px;
+    font-weight: 800;
+    /* border: 1px solid white; */
+    /* margin-top: 60px; */
+
+}
+
+.card p {
+    margin-top: 40px;
+    font-size: 24px;
+    width: 390.4px;
+    height: 216px;
+    letter-spacing: .02rem;
+    font-weight: 100;
+}
+
+.scroll {
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 120%;
+    font-family: sans-serif;
+    color: white;
+}
+.btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.last-download-btn {
+    padding: 20px;
+    border-radius: 50px;
+    font-size: 20px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0px;
+    background-color: #8790F2;
+    color: white;
+}
+
+.bottom-bg {
+    width: 100%;
+}
+
+footer {
+    height: 670px;
+    width: 100%;
+    background: linear-gradient(to right, #7F84CF, #32379D);
+    /* height: 100vh; */
+    /* Full height */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.lang {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.lang img {
+    height: 20px;
+}
+
+.icons {
+    width: 250px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.icon {
+    width: 30px;
+}
+
+.contents {
+    margin-top: 40px;
+    display: flex;
+    width: 75%;
+    justify-content: space-evenly;
+}
+
+.contents .content {
+    display: flex;
+    flex-direction: column;
+}
+
+.contents a,
+.contents p {
+    color: white;
+    text-decoration: none;
+    padding: 5px;
+    opacity: 0.8;
+}
+
+.contents p {
+    font-weight:600 ;
+}
+
+
+.footer-hr {
+    margin: 50px 0px 30px 0px;
+    width: 75%;
+}
+
+.end {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 75%;
+}
+
+.footer-img {
+    
+    width: 150px;
+}
+
+.footer-btn {
+    padding: 10px;
+    border-radius: 50px;
+    font-size: 13px;
+    border: 0px;
+    background-color: #5865f2;
+    color: white;
+    font-weight: 600;
+}
